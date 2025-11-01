@@ -16,6 +16,7 @@ export default function AboutPage() {
                 loop
                 muted
                 playsInline
+                
               >
                 <source src="/videos/WhatsApp Video 2025-06-12 at 12.23.03.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
