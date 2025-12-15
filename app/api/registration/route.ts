@@ -41,16 +41,37 @@ export async function POST(req: NextRequest) {
 
     // Excel Setup
     const sheetHeader = [
-      "Visitor Pass ID", "Name", "Email", "Phone", "Company", "Industry", "Job Title",
-      "Business Type", "Message", "Budget", "Location", "Terms Accepted",
-      "Marketing Consent", "Submitted At"
+      "Visitor Pass ID",
+      "Name",
+      "Email",
+      "Phone",
+      "Company",
+      "Industry",
+      "Job Title",
+      "Business Type",
+      "Message",
+      "Budget",
+      "Location",
+      "Terms Accepted",
+      "Marketing Consent",
+      "Submitted At",
     ];
 
     const sheetRow = [
-      visitorPassId, name, workEmail, phoneNumber, companyName, industry,
-      jobTitle, businessType, message, budget, location,
+      visitorPassId,
+      name,
+      workEmail,
+      phoneNumber,
+      companyName,
+      industry,
+      jobTitle,
+      businessType,
+      message,
+      budget,
+      location,
       termsAccepted ? "Yes" : "No",
-      marketingConsent ? "Yes" : "No", submittedAt,
+      marketingConsent ? "Yes" : "No",
+      submittedAt,
     ];
 
     const workbook = XLSX.utils.book_new();
@@ -76,24 +97,32 @@ export async function POST(req: NextRequest) {
 
     const adminEmailHtml = `
       <h2>New ${capitalizedType} Registration</h2>
-      ${visitorPassId ? `<p><strong>Visitor Pass ID:</strong> ${visitorPassId}</p>` : ""}
+      ${
+        visitorPassId
+          ? `<p><strong>Visitor Pass ID:</strong> ${visitorPassId}</p>`
+          : ""
+      }
       <p><strong>Name:</strong> ${name}</p>
       ${workEmail && `<p><strong>Email:</strong> ${workEmail}</p>`}
       ${phoneNumber && `<p><strong>Phone:</strong> ${phoneNumber}</p>`}
       ${companyName && `<p><strong>Company:</strong> ${companyName}</p>`}
       ${industry && `<p><strong>Industry:</strong> ${industry}</p>`}
       ${jobTitle && `<p><strong>Job Title:</strong> ${jobTitle}</p>`}
-      ${businessType && `<p><strong>Business Type:</strong> ${businessType}</p>`}
+      ${
+        businessType && `<p><strong>Business Type:</strong> ${businessType}</p>`
+      }
       ${budget && `<p><strong>Budget:</strong> ${budget}</p>`}
       ${location && `<p><strong>Location:</strong> ${location}</p>`}
       ${message && `<p><strong>Message:</strong> ${message}</p>`}
       <p><strong>Terms Accepted:</strong> ${termsAccepted ? "Yes" : "No"}</p>
-      <p><strong>Marketing Consent:</strong> ${marketingConsent ? "Yes" : "No"}</p>
+      <p><strong>Marketing Consent:</strong> ${
+        marketingConsent ? "Yes" : "No"
+      }</p>
       <p><strong>Submitted At:</strong> ${submittedAt}</p>
     `;
 
     await transporter.sendMail({
-      from: `"${EVENT_NAME}" <no-reply@maxpo.ae>`,
+      from: `"${EVENT_NAME}" <noreply@maxpo.ae>`,
       to: process.env.TO_USER!,
       subject: `New ${capitalizedType} Registration - ${name}`,
       html: adminEmailHtml,
@@ -114,24 +143,42 @@ export async function POST(req: NextRequest) {
         from: `"${EVENT_NAME}" <no-reply@maxpo.ae>`,
         to: workEmail,
         subject: `Your Visitor Pass - ${EVENT_NAME}`,
-        html: ThankYouEmailHandler({ name, visitorPassId,  }),
+        html: ThankYouEmailHandler({ name, visitorPassId }),
       });
     }
 
     // Google Sheets
-    await fetch("https://script.google.com/macros/s/AKfycbzaO0dCaH7oRBWwwqNzfXVZf6bPBKX-xRPEe_qXzsjpwa7jYyyOq9Li2LUV24lX_J26mw/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        type, visitorPassId, name, workEmail, phoneNumber, companyName, industry,
-        jobTitle, businessType, budget, location, message,
-        termsAccepted, marketingConsent, submittedAt,
-      }),
-    });
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbzaO0dCaH7oRBWwwqNzfXVZf6bPBKX-xRPEe_qXzsjpwa7jYyyOq9Li2LUV24lX_J26mw/exec",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type,
+          visitorPassId,
+          name,
+          workEmail,
+          phoneNumber,
+          companyName,
+          industry,
+          jobTitle,
+          businessType,
+          budget,
+          location,
+          message,
+          termsAccepted,
+          marketingConsent,
+          submittedAt,
+        }),
+      }
+    );
 
     return NextResponse.json({ success: true, visitorPassId });
   } catch (error) {
     console.error("Registration error:", error);
-    return NextResponse.json({ error: "Failed to submit registration" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to submit registration" },
+      { status: 500 }
+    );
   }
 }

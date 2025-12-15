@@ -1,28 +1,46 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import DownloadButton from '../components/DownloadButton'
+import Image from "next/image";
+import DownloadButton from "../components/DownloadButton";
 
 const pastEventImages = [
-  '/images/2020events/bpe-2.jpg',
-  '/images/2020events/bpe-4.jpg',
-  '/images/2020events/bpe-6.jpg',
-  '/images/2020events/bpe-7.jpg',
-  '/images/2020events/bpe-9.jpg',
-  '/images/2020events/bpe-12.jpg',
-  '/images/2020events/bpe-13.jpg',
-  '/images/2020events/bpe-14.jpg',
-  '/images/2020events/bpe-18.jpg',
-  '/images/2020events/bpe-20.jpg',
-  '/images/2020events/bpe-21.jpg',
-  '/images/2020events/bpe-22.jpg',
-  '/images/2020events/bpe-23.jpg',
-  '/images/2020events/bpe-26.jpg',
-  '/images/2020events/bpe-27.jpg',
-  '/images/2020events/bpe-28.jpg',
-  '/images/2020events/bpe-29.jpg',
-  '/images/2020events/bpe-30.jpg',
-]
+  "/images/past-events/2025/bpe25-1.jpg",
+  "/images/past-events/2025/bpe25-2.jpg",
+  "/images/past-events/2025/bpe25-3.jpg",
+  "/images/past-events/2025/bpe25-4.jpg",
+  "/images/past-events/2025/bpe25-5.jpg",
+  "/images/past-events/2025/bpe25-6.jpg",
+  "/images/past-events/2025/bpe25-7.jpg",
+  "/images/past-events/2025/bpe25-8.jpg",
+  "/images/past-events/2025/bpe25-9.jpg",
+  "/images/past-events/2025/bpe25-10.jpg",
+  "/images/past-events/2025/bpe25-11.jpg",
+  "/images/past-events/2025/bpe25-12.jpg",
+  "/images/past-events/2025/bpe25-13.jpg",
+  "/images/past-events/2025/bpe25-14.jpg",
+  "/images/past-events/2025/bpe25-15.jpg",
+  "/images/past-events/2025/bpe25-16.jpg",
+  "/images/past-events/2025/bpe25-17.jpg",
+  "/images/past-events/2025/bpe25-18.jpg",
+  "/images/2020events/bpe-2.jpg",
+  "/images/2020events/bpe-4.jpg",
+  "/images/2020events/bpe-6.jpg",
+  "/images/2020events/bpe-7.jpg",
+  "/images/2020events/bpe-9.jpg",
+  "/images/2020events/bpe-12.jpg",
+  "/images/2020events/bpe-13.jpg",
+  "/images/2020events/bpe-14.jpg",
+  "/images/2020events/bpe-18.jpg",
+  "/images/2020events/bpe-20.jpg",
+  "/images/2020events/bpe-21.jpg",
+  "/images/2020events/bpe-22.jpg",
+  "/images/2020events/bpe-23.jpg",
+  "/images/2020events/bpe-26.jpg",
+  "/images/2020events/bpe-27.jpg",
+  "/images/2020events/bpe-28.jpg",
+  "/images/2020events/bpe-29.jpg",
+  "/images/2020events/bpe-30.jpg",
+];
 
 export default function PastEventPage() {
   return (
@@ -87,13 +105,13 @@ export default function PastEventPage() {
           <div className="text-center mt-12">
             <p className="text-gray-700 text-lg leading-relaxed">
               Our previous event was a tremendous success, bringing together the
-              best in Bengaluru's real estate industry. The positive response and
-              successful outcomes have motivated us to make BPE 2025 even bigger
-              and better.
+              best in Bengaluru's real estate industry. The positive response
+              and successful outcomes have motivated us to make BPE 2025 even
+              bigger and better.
             </p>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
