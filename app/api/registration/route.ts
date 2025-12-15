@@ -148,30 +148,27 @@ export async function POST(req: NextRequest) {
     }
 
     // Google Sheets
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbzaO0dCaH7oRBWwwqNzfXVZf6bPBKX-xRPEe_qXzsjpwa7jYyyOq9Li2LUV24lX_J26mw/exec",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type,
-          visitorPassId,
-          name,
-          workEmail,
-          phoneNumber,
-          companyName,
-          industry,
-          jobTitle,
-          businessType,
-          budget,
-          location,
-          message,
-          termsAccepted,
-          marketingConsent,
-          submittedAt,
-        }),
-      }
-    );
+    await fetch(process.env.GOOGLE_APPS_SCRIPT_URL!, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type,
+        visitorPassId,
+        name,
+        workEmail,
+        phoneNumber,
+        companyName,
+        industry,
+        jobTitle,
+        businessType,
+        budget,
+        location,
+        message,
+        termsAccepted,
+        marketingConsent,
+        submittedAt,
+      }),
+    });
 
     return NextResponse.json({ success: true, visitorPassId });
   } catch (error) {
