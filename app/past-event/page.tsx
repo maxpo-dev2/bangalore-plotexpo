@@ -50,7 +50,7 @@ export default function PastEventPage() {
 
       <div className="container mx-auto px-4">
         <h1 className="text-4xl md:text-5xl font-bold text-green-700 text-center mb-12">
-          Past Event
+          Past Events
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

@@ -1,9 +1,18 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { Button } from "@/app/components/ui/button";
-import { ChevronLeft, ChevronRight, UserPlus, Megaphone, Layers, Building, Eye, Users2 } from "lucide-react";
-import { zenTokyoZoo } from './fonts'; // adjust path if needed
+import {
+  ChevronLeft,
+  ChevronRight,
+  UserPlus,
+  Megaphone,
+  Layers,
+  Building,
+  Eye,
+  Users2,
+} from "lucide-react";
+import { zenTokyoZoo } from "./fonts"; // adjust path if needed
 import { motion } from "framer-motion";
 import StatsSection from "./components/StatsSection";
 import PastSponsors from "./components/PastSponsors";
@@ -35,16 +44,22 @@ export default function HomePage() {
         <div className="absolute inset-0"></div>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-start pt-28">
           <div className="max-w-2xl ml-0 md:ml-20 px-4 md:px-0">
-<h1
-  className={`${zenTokyoZoo.className} text-[36px] sm:text-[64px] md:text-[96px] lg:text-[128px] leading-[1] text-transparent bg-clip-text bg-gradient-to-b from-white to-[#008815] inline-block whitespace-normal sm:whitespace-nowrap`}
->
-  Bengaluru Plot Expo 2025
-</h1>
+            <h1
+              className={`${zenTokyoZoo.className} text-2xl md:text-8xl font-bold leading-[1] text-transparent bg-clip-text bg-gradient-to-b from-white to-[#008815] inline-block whitespace-normal sm:whitespace-nowrap`}
+            >
+              Bengaluru Plot Expo 2025
+            </h1>
 
             <div className="text-white mb-8 mt-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">26-27 July 2025</h2>
-              <p className="text-md sm:text-lg">White House Convention Centre</p>
-              <p className="text-md sm:text-lg">HSR Layout Next to BDA Complex</p>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
+                26-27 July 2025
+              </h2>
+              <p className="text-md sm:text-lg">
+                White House Convention Centre
+              </p>
+              <p className="text-md sm:text-lg">
+                HSR Layout Next to BDA Complex
+              </p>
             </div>
           </div>
         </div>
@@ -132,7 +147,9 @@ export default function HomePage() {
                 className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-lg shadow-sm"
               >
                 {point.icon}
-                <h3 className="font-semibold text-[#00620F] mb-2">{point.title}</h3>
+                <h3 className="font-semibold text-[#00620F] mb-2">
+                  {point.title}
+                </h3>
                 <p className="text-gray-700">{point.text}</p>
               </motion.div>
             ))}
@@ -140,37 +157,50 @@ export default function HomePage() {
 
           <div className="text-center max-w-3xl mx-auto">
             <p className="text-gray-700 mb-4">
-              Whether you're a developer aiming to boost project visibility or an investor seeking your next great opportunity, <span className="font-semibold text-[#00620F]">#BPE 2025</span> is where connections are made and dreams take shape.
+              Whether you're a developer aiming to boost project visibility or
+              an investor seeking your next great opportunity,{" "}
+              <span className="font-semibold text-[#00620F]">#BPE 2025</span> is
+              where connections are made and dreams take shape.
             </p>
           </div>
         </div>
       </section>
 
-
-
-      <PastSponsors />
+      {/* <PastSponsors /> */}
 
       {/* Past Events Section */}
-<section className="py-16 bg-white">
-  <div className="container mx-auto px-4">
-    <h2 className="text-3xl md:text-4xl font-bold text-green-700 text-center mb-12">Past Event</h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {['bpe1.png', 'bpe2.png', 'bpe3.png', 'bpe4.png', 'bpe5.png', 'bpe6.png'].map((img, i) => (
-        <div key={i} className="rounded-lg overflow-hidden aspect-square">
-          <img src={`/images/past-events/${img}`} alt={`Event ${i + 1}`} className="w-full h-full object-cover" />
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-green-700 text-center mb-12">
+            Past Event
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {[
+              "bpe25-1.jpg",
+              "bpe25-2.jpg",
+              "bpe25-3.jpg",
+              "bpe25-4.jpg",
+              "bpe25-5.jpg",
+              "bpe25-6.jpg",
+            ].map((img, i) => (
+              <div key={i} className="rounded-lg overflow-hidden aspect-square">
+                <img
+                  src={`/images/past-events/2025/${img}`}
+                  alt={`Event ${i + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/past-event" passHref>
+              <Button className="bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded-md">
+                View All
+              </Button>
+            </Link>
+          </div>
         </div>
-      ))}
-    </div>
-    <div className="text-center mt-10">
-      <Link href="/past-event" passHref>
-        <Button className="bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded-md">
-          View All
-        </Button>
-      </Link>
-    </div>
-  </div>
-</section>
-
+      </section>
     </div>
   );
 }
