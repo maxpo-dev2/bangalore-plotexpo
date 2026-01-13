@@ -16,6 +16,7 @@ export default function AboutPage() {
                 loop
                 muted
                 playsInline
+                
               >
                 <source
                   src="https://maxpo-storage.blr1.digitaloceanspaces.com/manual-uploads/bpe/bpe%20website%20vedio.mp4"
