@@ -1,100 +1,127 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import { useSearchParams } from "next/navigation"
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void
+    gtag?: (...args: any[]) => void;
   }
 }
 
 const ThankYouPage = () => {
-  const [showCheckmark, setShowCheckmark] = useState(false)
-  const searchParams = useSearchParams()
-  const type = (searchParams.get("type") ?? "").toLowerCase()
+  const [showCheckmark, setShowCheckmark] = useState(false);
+  const searchParams = useSearchParams();
+  const type = (searchParams.get("type") ?? "").toLowerCase();
 
-  const validTypes = ["exhibitor", "visitor", "sponsor", "enquiry", "registration"]
+  const validTypes = [
+    "exhibitor",
+    "visitor",
+    "sponsor",
+    "enquiry",
+    "registration",
+  ];
   const titleMap: Record<string, string> = {
     exhibitor: "Exhibitor",
     visitor: "Visitor",
     sponsor: "Sponsor",
     enquiry: "Enquiry",
     registration: "Registration",
-  }
+  };
 
-  const heading = titleMap[type] || "Registration"
+  const heading = titleMap[type] || "Registration";
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.gtag && type === "exhibitor") {
-      window.gtag("event", "conversion_event_submit_lead_form_1")
+      window.gtag("event", "conversion_event_submit_lead_form_1");
     }
 
     const timer = setTimeout(() => {
-      setShowCheckmark(true)
-    }, 100)
+      setShowCheckmark(true);
+    }, 100);
 
-    return () => clearTimeout(timer)
-  }, [type])
+    return () => clearTimeout(timer);
+  }, [type]);
 
   if (!type || !validTypes.includes(type)) {
     return (
       <div className="min-h-[60vh] flex flex-col justify-center items-center text-center px-4">
-        <h1 className="text-3xl font-bold text-red-600 mb-2">Invalid Registration Type</h1>
-        <p className="text-gray-700 mb-4">The registration type provided in the URL is not recognized.</p>
-        <Link href="/register" className="text-[#406E24] underline hover:text-[#2d4f1a]">
+        <h1 className="text-3xl font-bold text-red-600 mb-2">
+          Invalid Registration Type
+        </h1>
+        <p className="text-gray-700 mb-4">
+          The registration type provided in the URL is not recognized.
+        </p>
+        <Link
+          href="/register"
+          className="text-[#406E24] underline hover:text-[#2d4f1a]"
+        >
           Go back to registration
         </Link>
       </div>
-    )
+    );
   }
 
-  const messages: Record<string, { title: string; bold: string; description: string; date: string; venue: string }> = {
+  const messages: Record<
+    string,
+    {
+      title: string;
+      bold: string;
+      description: string;
+      date: string;
+      venue: string;
+    }
+  > = {
     exhibitor: {
       title: "Thank You For Your Exhibitor Registration!",
-      bold: "You are now part of the Bangalore Plot Expo 2025 community",
-      description: "Our team will be in touch with you soon to discuss your exhibition requirements.",
-      date: "26-27 July 2025",
+      bold: "You are now part of the Bangalore Plot Expo 2026 community",
+      description:
+        "Our team will be in touch with you soon to discuss your exhibition requirements.",
+      date: "13-14 March 2026",
       venue: "White House Convention Centre, HSR Layout Next to BDA Complex",
     },
     visitor: {
       title: "Thank You For Your Visitor Registration!",
-      bold: "You are now registered for Bangalore Plot Expo 2025",
-      description: "We look forward to seeing you at the event. You will receive further details via email.",
-      date: "26-27 July 2025",
+      bold: "You are now registered for Bangalore Plot Expo 2026",
+      description:
+        "We look forward to seeing you at the event. You will receive further details via email.",
+      date: "13-14 March 2026",
       venue: "White House Convention Centre, HSR Layout Next to BDA Complex",
     },
     sponsor: {
       title: "Thank You For Your Sponsorship Interest!",
-      bold: "You are now part of the Bangalore Plot Expo 2025 community",
-      description: "Our sponsorship team will contact you shortly to discuss partnership opportunities.",
-      date: "26-27 July 2025",
+      bold: "You are now part of the Bangalore Plot Expo 2026 community",
+      description:
+        "Our sponsorship team will contact you shortly to discuss partnership opportunities.",
+      date: "13-14 March 2026",
       venue: "White House Convention Centre, HSR Layout Next to BDA Complex",
     },
     enquiry: {
       title: "Thank You For Your Enquiry!",
-      bold: "We have received your message about Bangalore Plot Expo 2025",
-      description: "Our team will get back to you within 24 hours with the information you requested.",
-      date: "26-27 July 2025",
+      bold: "We have received your message about Bangalore Plot Expo 2026",
+      description:
+        "Our team will get back to you within 24 hours with the information you requested.",
+      date: "13-14 March 2026",
       venue: "White House Convention Centre, HSR Layout Next to BDA Complex",
     },
     registration: {
       title: "Thank You For Your Registration!",
-      bold: "You are now registered for Bangalore Plot Expo 2025",
-      description: "Our team will be in touch with you soon with further details.",
-      date: "26-27 July 2025",
+      bold: "You are now registered for Bangalore Plot Expo 2026",
+      description:
+        "Our team will be in touch with you soon with further details.",
+      date: "13-14 March 2026",
       venue: "White House Convention Centre, HSR Layout Next to BDA Complex",
     },
-  }
+  };
 
-  const { title, bold, description, date, venue } = messages[type]
+  const { title, bold, description, date, venue } = messages[type];
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-start text-center px-4 py-12 bg-white mt-8">
       {/* Header Card */}
       <div className="w-full max-w-2xl rounded-t-lg py-4 text-white font-bold text-2xl bg-[#406E24] mt-8">
-        Bangalore Plot Expo 2025 - {heading}
+        Bangalore Plot Expo 2026 - {heading}
       </div>
 
       {/* Checkmark */}
@@ -129,7 +156,9 @@ const ThankYouPage = () => {
 
       {/* Event Details */}
       <div className="bg-gray-50 rounded-lg p-6 max-w-md mx-auto mb-8">
-        <h4 className="text-lg font-semibold text-[#406E24] mb-2">Event Details</h4>
+        <h4 className="text-lg font-semibold text-[#406E24] mb-2">
+          Event Details
+        </h4>
         <p className="text-gray-700 font-medium">{date}</p>
         <p className="text-gray-600 text-sm mt-1">{venue}</p>
       </div>
@@ -202,16 +231,20 @@ const ThankYouPage = () => {
       <div className="mt-12 max-w-2xl mx-auto text-center">
         <p className="text-sm text-gray-500 mb-2">
           For any queries, please contact us at{" "}
-          <a href="mailto:info@bangaloreplotexpo.com" className="text-[#406E24] hover:underline">
+          <a
+            href="mailto:info@bangaloreplotexpo.com"
+            className="text-[#406E24] hover:underline"
+          >
             info@bangaloreplotexpo.com
           </a>
         </p>
         <p className="text-sm text-gray-500">
-          Follow us on social media for the latest updates about Bangalore Plot Expo 2025
+          Follow us on social media for the latest updates about Bangalore Plot
+          Expo 2026
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ThankYouPage
+export default ThankYouPage;

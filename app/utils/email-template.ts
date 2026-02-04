@@ -1,5 +1,5 @@
-const EVENT_NAME = process.env.EVENT_NAME || "Bengaluru Plot Expo 2025";
-const EVENT_DATE = process.env.EVENT_DATE || "July 26-27, 2025";
+const EVENT_NAME = process.env.EVENT_NAME || "Bengaluru Plot Expo 2026";
+const EVENT_DATE = process.env.EVENT_DATE || "July 26-27, 2026";
 const EVENT_WEBSITE = process.env.EVENT_WEBSITE || "https://www.plotexpo.in/";
 const EVENT_EMAIL = process.env.EVENT_EMAIL || "annu@mindsquaremedia.com";
 
@@ -69,7 +69,7 @@ export const ThankYouEmailHandler = ({
           <p>Contact: <a href="mailto:${EVENT_EMAIL}" style="color:#00214d;">${EVENT_EMAIL}</a></p>
         </td></tr>
         <tr><td style="background:#00214d;padding:20px;text-align:center;">
-          <p style="color:#fff;font-size:12px;">©️ 2025 ${EVENT_NAME}. All rights reserved.</p>
+          <p style="color:#fff;font-size:12px;">©️ 2026 ${EVENT_NAME}. All rights reserved.</p>
         </td></tr>
       </table>
     </td></tr>

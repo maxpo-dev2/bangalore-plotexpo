@@ -4,88 +4,164 @@ import { Twitter, Instagram, Linkedin, MessageCircle } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="bg-[#00620F] text-white">
-      <div className="container mx-auto px-4 py-10">
-        {/* Top Row */}
-        <div className="flex flex-wrap md:flex-nowrap gap-8">
-          {/* Logo (untouched) */}
-          <div className="flex-shrink-0 -mt-14">
-            <div className="p-3 rounded mb-4">
-              <img
-                src="/images/bpe-logo.png"
-                alt="BPE Logo"
-                className="h-26 w-auto object-contain"
-              />
-            </div>
+      <div className="section-container  py-14">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_3fr] gap-12">
+          {/* Logo Column */}
+          <div className="flex flex-col items-start">
+            <img
+              src="/images/bpe-logo.png"
+              alt="BPE Logo"
+              className="h-24 w-auto object-contain mb-6"
+            />
+
+            <p className="text-sm text-green-100 max-w-xs leading-relaxed">
+              Bengaluru Plot Expo is the city’s premier platform dedicated to
+              plotted developments, farmland investments, and real estate
+              opportunities.
+            </p>
           </div>
 
-          {/* Footer Sections */}
-          <div className="flex flex-wrap gap-10 justify-between flex-grow">
-            {/* Event Information */}
+          {/* Links Columns */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {/* Event Info */}
             <div>
-              <h3 className="font-semibold text-lg mb-4">Event Information</h3>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/about" className="hover:text-green-200">About</Link></li>
-                <li><Link href="/past-event" className="hover:text-green-200">Past Event</Link></li>
-                <li><Link href="/past-event" className="hover:text-green-200">Exhibition</Link></li>
-                <li><Link href="/past-event" className="hover:text-green-200">Exhibitors</Link></li>
+              <h3 className="font-semibold text-base mb-4 tracking-wide">
+                Event
+              </h3>
+              <ul className="space-y-2 text-sm text-green-100">
+                <li>
+                  <Link href="/about" className="hover:text-white">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/past-event" className="hover:text-white">
+                    Past Events
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/past-event" className="hover:text-white">
+                    Exhibition
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/past-event" className="hover:text-white">
+                    Exhibitors
+                  </Link>
+                </li>
               </ul>
             </div>
 
             {/* Participants */}
             <div>
-              <h3 className="font-semibold text-lg mb-4">Participants</h3>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/past-event" className="hover:text-green-200">Exhibition</Link></li>
-                <li><Link href="/past-event" className="hover:text-green-200">Exhibitors</Link></li>
-              </ul>
-
-              <h3 className="font-semibold text-lg mb-4 mt-6">Registration</h3>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/registration?type=exhibitor" className="hover:text-green-200">Register as Exhibitor</Link></li>
-                 <li><Link href="/registration?type=visitor" className="hover:text-green-200">Register as Visitor</Link></li>
-                  <li><Link href="/registration?type=enquiry" className="hover:text-green-200">Enquiry</Link></li>
+              <h3 className="font-semibold text-base mb-4 tracking-wide">
+                Participants
+              </h3>
+              <ul className="space-y-2 text-sm text-green-100">
+                <li>
+                  <Link href="/past-event" className="hover:text-white">
+                    Exhibition
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/past-event" className="hover:text-white">
+                    Exhibitors
+                  </Link>
+                </li>
               </ul>
             </div>
 
-            {/* Contact Section */}
+            {/* Registration */}
             <div>
-              <h3 className="font-semibold text-lg mb-4">Contact</h3>
-  {/* Clickable Phone Number */}
-  <p className="text-sm mb-4">
-    <a href="tel:9845114655" className="hover:text-green-200">9845114655</a>
-  </p>
+              <h3 className="font-semibold text-base mb-4 tracking-wide">
+                Registration
+              </h3>
+              <ul className="space-y-2 text-sm text-green-100">
+                <li>
+                  <Link
+                    href="/registration?type=exhibitor"
+                    className="hover:text-white"
+                  >
+                    Exhibitor
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/registration?type=visitor"
+                    className="hover:text-white"
+                  >
+                    Visitor
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/registration?type=enquiry"
+                    className="hover:text-white"
+                  >
+                    Enquiry
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-  {/* Clickable Email Address */}
-  <p className="text-sm mb-4">
-    <a href="mailto:annu@mindsquaremedia.com" className="hover:text-green-200">annu@mindsquaremedia.com</a>
-  </p>
+            {/* Contact */}
+            <div>
+              <h3 className="font-semibold text-base mb-4 tracking-wide">
+                Contact
+              </h3>
 
-              <div className="flex space-x-3 mb-6">
-                <Link href="#" className="hover:text-green-200"><Twitter size={20} /></Link>
-                <Link href="#" className="hover:text-green-200"><Instagram size={20} /></Link>
-                <Link href="#" className="hover:text-green-200"><Linkedin size={20} /></Link>
-                <Link href="#" className="hover:text-green-200"><MessageCircle size={20} /></Link>
+              <p className="text-sm text-green-100 mb-2">
+                <a href="tel:9845114655" className="hover:text-white">
+                  +91 98451 14655
+                </a>
+              </p>
+
+              <p className="text-sm text-green-100 mb-4">
+                <a
+                  href="mailto:annu@mindsquaremedia.com"
+                  className="hover:text-white"
+                >
+                  annu@mindsquaremedia.com
+                </a>
+              </p>
+
+              {/* Social Icons */}
+              <div className="flex items-center gap-3">
+                {[Twitter, Instagram, Linkedin, MessageCircle].map(
+                  (Icon, i) => (
+                    <Link
+                      key={i}
+                      href="#"
+                      className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#00620F] transition"
+                    >
+                      <Icon size={18} />
+                    </Link>
+                  ),
+                )}
               </div>
-
-              <div className="p-2 rounded ml-[-9px] ">
-                <img
-                  src="/images/mind-square-logo W (1).png"
-                  alt="Mindsquare Logo"
-                  className="w-auto h-20 object-contain mt-10"
-                />
-              </div>
-
-
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white mt-10 pt-4">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-2 text-sm text-center">
-            <Link href="/terms" className="hover:text-green-200">Terms and Conditions</Link>
-            <span className="hidden sm:inline">|</span>
-            <Link href="/privacy" className="hover:text-green-200">Privacy Policy</Link>
+        {/* Divider */}
+        <div className="border-t border-white/20 mt-12 pt-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-green-100">
+            <div className="flex gap-4">
+              <Link href="/terms" className="hover:text-white">
+                Terms & Conditions
+              </Link>
+              <Link href="/privacy" className="hover:text-white">
+                Privacy Policy
+              </Link>
+            </div>
+
+            {/* Partner Logo */}
+            <img
+              src="/images/mind-square-logo W (1).png"
+              alt="Mindsquare Logo"
+              className="h-14 object-contain"
+            />
           </div>
         </div>
       </div>

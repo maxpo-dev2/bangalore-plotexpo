@@ -8,7 +8,7 @@ import path from "path";
 import QRCode from "qrcode";
 import { ThankYouEmailHandler } from "@/app/utils/email-template";
 
-const EVENT_NAME = process.env.EVENT_NAME || "Bengaluru Plot Expo 2025";
+const EVENT_NAME = process.env.EVENT_NAME || "Bengaluru Plot Expo 2026";
 
 export async function POST(req: NextRequest) {
   try {
@@ -175,7 +175,7 @@ export async function POST(req: NextRequest) {
     console.error("Registration error:", error);
     return NextResponse.json(
       { error: "Failed to submit registration" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

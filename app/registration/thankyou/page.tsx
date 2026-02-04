@@ -55,7 +55,7 @@
 //             </h2>
 
 //             <h3 className="text-lg font-semibold text-gray-700 mb-6">
-//               You are now part of the Bengaluru Plot Expo 2025
+//               You are now part of the Bengaluru Plot Expo 2026
 //             </h3>
 
 //             <div className="space-y-4 text-gray-600">
@@ -63,7 +63,7 @@
 //               <p className="text-base">
 //                 We look forward to welcoming you at the White House Convention Centre HSR Layout Next to BDA Complex
 //               </p>
-//               <p className="text-base font-medium">26 July – 27 July 2025</p>
+//               <p className="text-base font-medium">26 July – 27 July 2026</p>
 //             </div>
 
 //             {/* Buttons */}
@@ -100,17 +100,16 @@
 //   )
 // }
 
-
 // app/registration/thankyou/page.tsx
-'use client'
+"use client";
 
-import { Suspense } from 'react'
-import ThankYouClient from '@/app/components/ThankYouClient'
+import { Suspense } from "react";
+import ThankYouClient from "@/app/components/ThankYouClient";
 
 export default function RegistrationThankYouPage() {
   return (
     <Suspense fallback={<div className="text-center py-20">Loading...</div>}>
       <ThankYouClient />
     </Suspense>
-  )
+  );
 }
