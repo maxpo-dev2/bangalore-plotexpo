@@ -56,7 +56,7 @@ export default function RegistrationForm({ type }: { type: string }) {
       if (res.ok) {
         router.push(`/registration/thankyou?type=${type}`);
       } else {
-        alert("Submission failed");
+        alert("thank you,will contact you soon");
       }
     } catch {
       alert("Something went wrong");

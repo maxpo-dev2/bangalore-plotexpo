@@ -9,10 +9,30 @@ import QRCode from "qrcode";
 import { ThankYouEmailHandler } from "@/app/utils/email-template";
 
 const EVENT_NAME = process.env.EVENT_NAME || "Bengaluru Plot Expo 2026";
+const ALLOWED_TYPES = ["visitor", "exhibitor"] as const;
+
+/** Basic HTML escape to prevent injection */
+const escapeHtml = (str = "") =>
+  str.replace(
+    /[&<>"']/g,
+    (m) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;",
+      })[m] as string,
+  );
 
 export async function POST(req: NextRequest) {
   try {
-    const type = req.nextUrl.searchParams.get("type") || "visitor";
+    const typeParam = req.nextUrl.searchParams.get("type") || "visitor";
+    // if (!ALLOWED_TYPES.includes(typeParam as any)) {
+    //   return NextResponse.json({ error: "Invalid type" }, { status: 400 });
+    // }
+
+    const type = typeParam as (typeof ALLOWED_TYPES)[number];
     const data = await req.json();
 
     const {
@@ -30,6 +50,21 @@ export async function POST(req: NextRequest) {
       budget = "",
     } = data;
 
+    // Basic validation
+    if (!name || !termsAccepted) {
+      return NextResponse.json(
+        { error: "Name and terms acceptance are required" },
+        { status: 400 },
+      );
+    }
+
+    if (type === "visitor" && !workEmail) {
+      return NextResponse.json(
+        { error: "Email is required for visitors" },
+        { status: 400 },
+      );
+    }
+
     const visitorPassId =
       type === "visitor"
         ? `BPE-${crypto.randomBytes(3).toString("hex").toUpperCase()}`
@@ -39,7 +74,8 @@ export async function POST(req: NextRequest) {
       timeZone: "Asia/Kolkata",
     });
 
-    // Excel Setup
+    /* -------------------- Excel Setup -------------------- */
+
     const sheetHeader = [
       "Visitor Pass ID",
       "Name",
@@ -76,13 +112,21 @@ export async function POST(req: NextRequest) {
 
     const workbook = XLSX.utils.book_new();
     const worksheet = XLSX.utils.aoa_to_sheet([sheetHeader, sheetRow]);
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
-    const buffer = XLSX.write(workbook, { type: "buffer", bookType: "xlsx" });
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Registrations");
 
-    const filePath = path.join(os.tmpdir(), `${type}-registration.xlsx`);
+    const buffer = XLSX.write(workbook, {
+      type: "buffer",
+      bookType: "xlsx",
+    });
+
+    const filePath = path.join(
+      os.tmpdir(),
+      `${type}-registration-${Date.now()}.xlsx`,
+    );
     await writeFile(filePath, buffer);
 
-    // Email Setup
+    /* -------------------- Email Transport -------------------- */
+
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST!,
       port: 465,
@@ -97,32 +141,24 @@ export async function POST(req: NextRequest) {
 
     const adminEmailHtml = `
       <h2>New ${capitalizedType} Registration</h2>
-      ${
-        visitorPassId
-          ? `<p><strong>Visitor Pass ID:</strong> ${visitorPassId}</p>`
-          : ""
-      }
-      <p><strong>Name:</strong> ${name}</p>
-      ${workEmail && `<p><strong>Email:</strong> ${workEmail}</p>`}
-      ${phoneNumber && `<p><strong>Phone:</strong> ${phoneNumber}</p>`}
-      ${companyName && `<p><strong>Company:</strong> ${companyName}</p>`}
-      ${industry && `<p><strong>Industry:</strong> ${industry}</p>`}
-      ${jobTitle && `<p><strong>Job Title:</strong> ${jobTitle}</p>`}
-      ${
-        businessType && `<p><strong>Business Type:</strong> ${businessType}</p>`
-      }
-      ${budget && `<p><strong>Budget:</strong> ${budget}</p>`}
-      ${location && `<p><strong>Location:</strong> ${location}</p>`}
-      ${message && `<p><strong>Message:</strong> ${message}</p>`}
+      ${visitorPassId ? `<p><strong>Visitor Pass ID:</strong> ${visitorPassId}</p>` : ""}
+      <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+      ${workEmail && `<p><strong>Email:</strong> ${escapeHtml(workEmail)}</p>`}
+      ${phoneNumber && `<p><strong>Phone:</strong> ${escapeHtml(phoneNumber)}</p>`}
+      ${companyName && `<p><strong>Company:</strong> ${escapeHtml(companyName)}</p>`}
+      ${industry && `<p><strong>Industry:</strong> ${escapeHtml(industry)}</p>`}
+      ${jobTitle && `<p><strong>Job Title:</strong> ${escapeHtml(jobTitle)}</p>`}
+      ${businessType && `<p><strong>Business Type:</strong> ${escapeHtml(businessType)}</p>`}
+      ${budget && `<p><strong>Budget:</strong> ${escapeHtml(budget)}</p>`}
+      ${location && `<p><strong>Location:</strong> ${escapeHtml(location)}</p>`}
+      ${message && `<p><strong>Message:</strong> ${escapeHtml(message)}</p>`}
       <p><strong>Terms Accepted:</strong> ${termsAccepted ? "Yes" : "No"}</p>
-      <p><strong>Marketing Consent:</strong> ${
-        marketingConsent ? "Yes" : "No"
-      }</p>
+      <p><strong>Marketing Consent:</strong> ${marketingConsent ? "Yes" : "No"}</p>
       <p><strong>Submitted At:</strong> ${submittedAt}</p>
     `;
 
     await transporter.sendMail({
-      from: `"${EVENT_NAME}" <noreply@maxpo.ae>`,
+      from: `"${EVENT_NAME}" <${process.env.EMAIL_NOREPLY_ADDRESS}>`,
       to: process.env.TO_USER!,
       subject: `New ${capitalizedType} Registration - ${name}`,
       html: adminEmailHtml,
@@ -134,20 +170,22 @@ export async function POST(req: NextRequest) {
       ],
     });
 
-    if (type === "visitor" && workEmail && visitorPassId) {
-      const qrData = `Visitor Pass: ${visitorPassId}`;
-      const qrImage = await QRCode.toDataURL(qrData);
-      // console.log(qrImage)
+    /* -------------------- Visitor Email + QR -------------------- */
 
+    if (type === "visitor" && visitorPassId) {
       await transporter.sendMail({
-        from: `"${EVENT_NAME}" <no-reply@maxpo.ae>`,
+        from: `"${EVENT_NAME}" <${process.env.EMAIL_NOREPLY_ADDRESS}>`,
         to: workEmail,
         subject: `Your Visitor Pass - ${EVENT_NAME}`,
-        html: ThankYouEmailHandler({ name, visitorPassId }),
+        html: ThankYouEmailHandler({
+          name,
+          visitorPassId,
+        }),
       });
     }
 
-    // Google Sheets
+    /* -------------------- Google Sheets -------------------- */
+
     await fetch(process.env.GOOGLE_APPS_SCRIPT_URL!, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

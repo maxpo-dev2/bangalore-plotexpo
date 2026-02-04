@@ -4,7 +4,7 @@ import DateBadge from "./DateBadge";
 const HeroSection = () => {
   return (
     <section
-      className="relative h-[calc(100vh-80px)] bg-center bg-cover bg-[#C6FFC2] bg-no-repeat"
+      className="relative h-[calc(100vh-80px)] bg-center bg-cover bg-[#C6FFC2] bg-no-repeat "
       style={{
         backgroundImage: "url('/images/hero-banner.png')",
       }}
