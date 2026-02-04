@@ -1,6 +1,6 @@
 export default function PrivacyPolicy() {
   return (
-    <section className="bg-white">
+    <section className="bg-white ">
       {/* Header */}
       <div className="bg-[#00620F] text-white py-14 md:pt-32">
         <div className="section-container">

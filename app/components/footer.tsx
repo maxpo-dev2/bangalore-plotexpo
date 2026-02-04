@@ -120,7 +120,7 @@ export default function Footer() {
               <p className="text-sm text-green-100 mb-4">
                 <a
                   href="mailto:annu@mindsquaremedia.com"
-                  className="hover:text-white"
+                  className="hover:text-white lock w-full break-all"
                 >
                   annu@mindsquaremedia.com
                 </a>

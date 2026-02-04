@@ -90,7 +90,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden mt-4 pt-[100px] bg-primary text-white shadow-inner px-6 pb-6 space-y-4">
+        <div className="md:hidden bg-primary text-white shadow-inner px-6 pt-10 pb-8 space-y-4 flex flex-col ">
           {navItems.map((item) => (
             <NavLink
               key={item.label}

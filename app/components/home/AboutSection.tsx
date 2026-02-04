@@ -5,9 +5,9 @@ export default function AboutUsSection() {
   return (
     <div className="relative min-h-screen" id="about">
       <section>
-        <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 p-4 gap-0 md:p-0">
           {/* Video Section */}
-          <div className="w-full h-[260px] sm:h-[360px] lg:h-full overflow-hidden">
+          <div className="w-full h-full overflow-hidden">
             <video
               className="w-full h-full object-cover"
               autoPlay
@@ -27,7 +27,7 @@ export default function AboutUsSection() {
             className="
               bg-secondary
               w-full
-              my-10
+              my-0 md:my-10
               lg:-translate-x-10
               p-6 sm:p-10 
             "
