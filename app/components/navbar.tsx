@@ -61,6 +61,7 @@ export default function Navbar() {
         </div>
 
         {/* Spacer */}
+        <div className="w-[20vw] h-[60px]" />
 
         {/* Desktop Nav */}
         <div className="hidden md:flex justify-centeritems-center gap-6 ">

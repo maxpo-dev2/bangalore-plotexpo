@@ -4,7 +4,7 @@ import DateBadge from "./DateBadge";
 const HeroSection = () => {
   return (
     <section
-      className="relative h-[calc(100vh-80px)] bg-center bg-cover bg-[#C6FFC2] bg-no-repeat "
+      className="relative h-screen bg-center bg-cover bg-[#C6FFC2] bg-no-repeat "
       style={{
         backgroundImage: "url('/images/hero-banner.png')",
       }}
@@ -13,7 +13,7 @@ const HeroSection = () => {
       <div className="relative z-10  h-full flex flex-col justify-start pt-[14vh]">
         <div className="flex justify-center items-center">
           <h1
-            className={`${zenTokyoZoo.className} text-3xl  md:text-8xl font-bold leading-[1] text-primary inline-block whitespace-normal sm:whitespace-nowrap`}
+            className={`${zenTokyoZoo.className} text-3xl  md:text-8xl font-bold leading-[1] text-primary inline-block whitespace-normal `}
           >
             Bengaluru Plot Expo 2026
           </h1>
