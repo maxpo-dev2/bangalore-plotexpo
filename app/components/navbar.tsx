@@ -61,10 +61,9 @@ export default function Navbar() {
         </div>
 
         {/* Spacer */}
-        <div className="w-[200px] h-[60px]" />
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6 ">
+        <div className="hidden md:flex justify-centeritems-center gap-6 ">
           {navItems.map((item) => (
             <NavLink key={item.label} {...item} />
           ))}
