@@ -13,7 +13,7 @@ const HeroSection = () => {
       <div className="relative z-10  h-full flex flex-col justify-start pt-[14vh]">
         <div className="flex justify-center items-center">
           <h1
-            className={`${zenTokyoZoo.className} text-2xl  md:text-8xl font-bold leading-[1] text-primary inline-block whitespace-normal sm:whitespace-nowrap`}
+            className={`${zenTokyoZoo.className} text-3xl  md:text-8xl font-bold leading-[1] text-primary inline-block whitespace-normal sm:whitespace-nowrap`}
           >
             Bengaluru Plot Expo 2026
           </h1>

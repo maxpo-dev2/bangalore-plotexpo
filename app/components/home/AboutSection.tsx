@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function AboutUsSection() {
   return (
-    <div className="relative min-h-screen" id="about">
+    <div className="relative h-full bg-white" id="about">
       <section>
         <div className="grid grid-cols-1 lg:grid-cols-2 p-4 gap-0 md:p-0">
           {/* Video Section */}

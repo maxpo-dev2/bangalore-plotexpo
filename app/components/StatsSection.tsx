@@ -78,7 +78,7 @@ const StatsRow = ({
 
 const StatsSection: React.FC = () => {
   return (
-    <section className="py-12">
+    <section className="py-12 bg-white">
       <div className="section-container space-y-4">
         {stats.map((stat, index) => (
           <StatsRow

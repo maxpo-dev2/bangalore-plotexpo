@@ -45,7 +45,7 @@ const PastEventSection = () => {
               {/* Hover Text */}
               <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <p className="text-white font-semibold text-sm">
-                  Banglore Plot Expo 2026
+                  Bengaluru Plot Expo 2025
                 </p>
               </div>
             </div>

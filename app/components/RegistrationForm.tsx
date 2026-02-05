@@ -66,7 +66,7 @@ export default function RegistrationForm({ type }: { type: string }) {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-14">
+    <section className="max-w-6xl mx-auto px-4 py-14 bg-white text-black">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         {/* FORM */}
         <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
