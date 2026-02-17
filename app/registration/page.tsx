@@ -243,7 +243,7 @@ import RegistrationForm from "@/app/components/RegistrationForm";
 
 function RegistrationWrapper() {
   const searchParams = useSearchParams();
-  const type = searchParams.get("type") || "";
+  const type = searchParams.get("type") || searchParams.get("t") || "";
   return <RegistrationForm type={type} />;
 }
 

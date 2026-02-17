@@ -61,9 +61,9 @@
 //             <div className="space-y-4 text-gray-600">
 //               <p className="text-base">Our team will be in touch with you soon.</p>
 //               <p className="text-base">
-//                 We look forward to welcoming you at the White House Convention Centre HSR Layout Next to BDA Complex
+//                 We look forward to welcoming you at theShubh Convention Center, J P Nagar Banglore
 //               </p>
-//               <p className="text-base font-medium">26 July – 27 July 2026</p>
+//               <p className="text-base font-medium">14-15 March 2026</p>
 //             </div>
 
 //             {/* Buttons */}

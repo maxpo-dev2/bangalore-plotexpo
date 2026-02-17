@@ -63,10 +63,10 @@ export default function ThankYouClient() {
                 Our team will be in touch with you soon.
               </p>
               <p className="text-base">
-                We look forward to welcoming you at the White House Convention
-                Centre HSR Layout Next to BDA Complex
+                We look forward to welcoming you at the Shubh Convention Center,
+                J P Nagar Banglore
               </p>
-              <p className="text-base font-medium">26 July – 27 July 2026</p>
+              <p className="text-base font-medium">14-15 March 2026</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
