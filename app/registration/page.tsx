@@ -250,7 +250,7 @@ function RegistrationWrapper() {
 export default function RegistrationPage() {
   return (
     <Suspense
-      fallback={<div className="text-center py-20 bg-white">Loading...</div>}
+      fallback={<div className="text-center py-20 bg-white">Loading....</div>}
     >
       <RegistrationWrapper />
     </Suspense>
