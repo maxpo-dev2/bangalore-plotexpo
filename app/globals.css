@@ -3,19 +3,40 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --color-primary: #00620f;
+  --color-secondary: #b0ffaa;
+
+  /* Neutrals */
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* App Defaults */
+  --background: var(--color-white);
+  --foreground: var(--color-black);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    /* Keep brand colors same in dark mode */
+    --color-primary: #00620f;
+    --color-secondary: #b0ffaa;
   }
 }
 
+.html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.section-container {
+  @apply mx-4 sm:mx-6 md:mx-8 lg:mx-12 xl:mx-16 2xl:mx-52;
 }
