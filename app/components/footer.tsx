@@ -1,6 +1,30 @@
 import Link from "next/link";
-import { Twitter, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import {
+  Twitter,
+  Instagram,
+  Linkedin,
+  MessageCircle,
+  Facebook,
+} from "lucide-react";
 
+const socialMediaIcons = [
+  // {
+  //   icon: Twitter,
+  //   href: "https://twitter.com/BPE2026",
+  // },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/bengaluru_plot_expo/",
+  },
+  {
+    icon: Facebook,
+    href: "https://www.facebook.com/bengaluruplotexpo2025/",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/showcase/bengaluru-plot-expo/",
+  },
+];
 export default function Footer() {
   return (
     <footer className="bg-[#00620F] text-white">
@@ -128,17 +152,16 @@ export default function Footer() {
 
               {/* Social Icons */}
               <div className="flex items-center gap-3">
-                {[Twitter, Instagram, Linkedin, MessageCircle].map(
-                  (Icon, i) => (
-                    <Link
-                      key={i}
-                      href="#"
-                      className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#00620F] transition"
-                    >
-                      <Icon size={18} />
-                    </Link>
-                  ),
-                )}
+                {socialMediaIcons.map((icon, i) => (
+                  <Link
+                    key={i}
+                    href={icon.href}
+                    target="_blank"
+                    className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#00620F] transition"
+                  >
+                    <icon.icon size={18} />
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
