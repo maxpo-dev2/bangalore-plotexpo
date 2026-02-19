@@ -4,6 +4,6 @@
 const nextConfig = {
   reactStrictMode: true,
   // Add other settings below as needed
-}
+};
 
-export default nextConfig
+export default nextConfig;

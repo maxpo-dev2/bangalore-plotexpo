@@ -38,7 +38,9 @@ export default function PastSponsors() {
     <div>
       {/* Section Heading */}
       <div className="text-center mb-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#00620F]">Past Exhibitors</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#00620F]">
+          Past Exhibitors
+        </h2>
       </div>
 
       {/* Scrolling Logos */}

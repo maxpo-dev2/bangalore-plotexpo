@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { Download } from 'lucide-react'
+import { Download } from "lucide-react";
 
 export default function DownloadButton() {
   return (
@@ -30,5 +30,5 @@ export default function DownloadButton() {
         <span className="hidden md:inline">Download Docket</span>
       </a>
     </div>
-  )
+  );
 }
