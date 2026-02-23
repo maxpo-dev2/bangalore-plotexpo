@@ -2,6 +2,8 @@ const EVENT_NAME = process.env.EVENT_NAME || "Bengaluru Plot Expo 2026";
 const EVENT_DATE = process.env.EVENT_DATE || "March 14-15, 2026";
 const EVENT_WEBSITE = process.env.EVENT_WEBSITE || "https://www.plotexpo.in/";
 const EVENT_EMAIL = process.env.EVENT_EMAIL || "annu@mindsquaremedia.com";
+const EVENT_VENUE =
+  process.env.EVENT_VENUE || "Shubh Conventional Center, JP Nagar, Bangalore";
 
 export const ThankYouEmailHandler = ({
   name,
@@ -26,7 +28,7 @@ export const ThankYouEmailHandler = ({
         <tr><td><img src="https://cloud1.email2go.io/4825f2b20fb569c346c060a2f8c31c18/bdb4e3000146b3ca60b268a06562ab908f87e5491506b39afbf8ce182c020e80.jpg" style="width:100%" /></td></tr>
         <tr><td style="padding:40px 30px;text-align:center;">
           <p style="font-size:18px;"><strong>Hey ${name?.split(" ")[0] || "there"},</strong></p>
-          <p>Thank you for registering for <strong style="color:#00214d;">${EVENT_NAME}</strong> on <strong style="color:#fdb714;">${EVENT_DATE}</strong>.</p>
+          <p>Thank you for registering for <strong style="color:#00214d;">${EVENT_NAME}</strong> on <strong style="color:#fdb714;">${EVENT_DATE}</strong> at <strong style="color:#fdb714;">${EVENT_VENUE}</strong>.</p>
           <p>Please find your visitor pass ID below:</p>
           <div style="background:#fff6e0;padding:20px;border-left:4px solid #fdb714;margin:30px 0;">
             <p style="margin:0;font-size:24px;font-weight:bold;color:#00214d;">${visitorPassId}</p>
