@@ -7,6 +7,7 @@ import os from "os";
 import path from "path";
 import QRCode from "qrcode";
 import { ThankYouEmailHandler } from "@/app/utils/email-template";
+import { AdminRegistrationEmail } from "@/app/utils/admin-email-template";
 
 const EVENT_NAME = process.env.EVENT_NAME || "Bengaluru Plot Expo 2026";
 const ALLOWED_TYPES = ["visitor", "exhibitor"] as const;
@@ -48,8 +49,12 @@ export async function POST(req: NextRequest) {
       marketingConsent,
       location = "",
       budget = "",
+      utmCampaign = "direct_campaign",
+      utmMedium = "website",
+      utmSource = "direct",
     } = data;
 
+    console.log(data);
     // Basic validation
     if (!name || !termsAccepted) {
       return NextResponse.json(
@@ -74,59 +79,6 @@ export async function POST(req: NextRequest) {
       timeZone: "Asia/Kolkata",
     });
 
-    /* -------------------- Excel Setup -------------------- */
-
-    const sheetHeader = [
-      "Visitor Pass ID",
-      "Name",
-      "Email",
-      "Phone",
-      "Company",
-      "Industry",
-      "Job Title",
-      "Business Type",
-      "Message",
-      "Budget",
-      "Location",
-      "Terms Accepted",
-      "Marketing Consent",
-      "Submitted At",
-    ];
-
-    const sheetRow = [
-      visitorPassId,
-      name,
-      workEmail,
-      phoneNumber,
-      companyName,
-      industry,
-      jobTitle,
-      businessType,
-      message,
-      budget,
-      location,
-      termsAccepted ? "Yes" : "No",
-      marketingConsent ? "Yes" : "No",
-      submittedAt,
-    ];
-
-    const workbook = XLSX.utils.book_new();
-    const worksheet = XLSX.utils.aoa_to_sheet([sheetHeader, sheetRow]);
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Registrations");
-
-    const buffer = XLSX.write(workbook, {
-      type: "buffer",
-      bookType: "xlsx",
-    });
-
-    const filePath = path.join(
-      os.tmpdir(),
-      `${type}-registration-${Date.now()}.xlsx`,
-    );
-    await writeFile(filePath, buffer);
-
-    /* -------------------- Email Transport -------------------- */
-
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST!,
       port: 465,
@@ -139,35 +91,34 @@ export async function POST(req: NextRequest) {
 
     const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
 
-    const adminEmailHtml = `
-      <h2>New ${capitalizedType} Registration</h2>
-      ${visitorPassId ? `<p><strong>Visitor Pass ID:</strong> ${visitorPassId}</p>` : ""}
-      <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-      ${workEmail && `<p><strong>Email:</strong> ${escapeHtml(workEmail)}</p>`}
-      ${phoneNumber && `<p><strong>Phone:</strong> ${escapeHtml(phoneNumber)}</p>`}
-      ${companyName && `<p><strong>Company:</strong> ${escapeHtml(companyName)}</p>`}
-      ${industry && `<p><strong>Industry:</strong> ${escapeHtml(industry)}</p>`}
-      ${jobTitle && `<p><strong>Job Title:</strong> ${escapeHtml(jobTitle)}</p>`}
-      ${businessType && `<p><strong>Business Type:</strong> ${escapeHtml(businessType)}</p>`}
-      ${budget && `<p><strong>Budget:</strong> ${escapeHtml(budget)}</p>`}
-      ${location && `<p><strong>Location:</strong> ${escapeHtml(location)}</p>`}
-      ${message && `<p><strong>Message:</strong> ${escapeHtml(message)}</p>`}
-      <p><strong>Terms Accepted:</strong> ${termsAccepted ? "Yes" : "No"}</p>
-      <p><strong>Marketing Consent:</strong> ${marketingConsent ? "Yes" : "No"}</p>
-      <p><strong>Submitted At:</strong> ${submittedAt}</p>
-    `;
+    const adminEmailHtml = AdminRegistrationEmail({
+      eventName: EVENT_NAME,
+      type: capitalizedType,
+      visitorPassId,
+      name,
+      workEmail,
+      phoneNumber,
+      companyName,
+      industry,
+      jobTitle,
+      businessType,
+      budget,
+      location,
+      message,
+      termsAccepted,
+      marketingConsent,
+      submittedAt,
+      utmSource,
+      utmMedium,
+      utmCampaign,
+    });
 
     await transporter.sendMail({
       from: `"${EVENT_NAME}" <${process.env.EMAIL_NOREPLY_ADDRESS}>`,
       to: process.env.TO_USER!,
       subject: `New ${capitalizedType} Registration - ${name}`,
       html: adminEmailHtml,
-      attachments: [
-        {
-          filename: `${type}-registration.xlsx`,
-          path: filePath,
-        },
-      ],
+      attachments: [],
     });
 
     /* -------------------- Visitor Email + QR -------------------- */
@@ -205,6 +156,9 @@ export async function POST(req: NextRequest) {
         termsAccepted,
         marketingConsent,
         submittedAt,
+        utmSource,
+        utmMedium,
+        utmCampaign,
       }),
     });
 

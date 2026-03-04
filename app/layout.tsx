@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/footer";
+import { Suspense } from "react";
+import UTMTracker from "@/lib/utm/UtmTracker";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -67,6 +69,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         <main className="mt-16">{children}</main>
+        <Suspense>
+          <UTMTracker />
+        </Suspense>
         <Footer />
       </body>
     </html>
