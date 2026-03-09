@@ -16,17 +16,6 @@
   --foreground: var(--color-black);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-
-    /* Keep brand colors same in dark mode */
-    --color-primary: #00620f;
-    --color-secondary: #b0ffaa;
-  }
-}
-
 .html {
   scroll-behavior: smooth;
 }
