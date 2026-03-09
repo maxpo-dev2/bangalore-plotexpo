@@ -28,6 +28,7 @@ export default function RegistrationForm({ type }: { type: string }) {
       .required("Name is required"),
 
     workEmail: Yup.string()
+      .trim()
       .email("Enter a valid email address")
       .required("Email is required"),
 
@@ -193,7 +194,7 @@ export default function RegistrationForm({ type }: { type: string }) {
                 value={formik.values.workEmail}
                 onChange={formik.handleChange}
               />
-              {formik.errors.workEmail &&
+              {formik.touched.workEmail &&
                 typeof formik.errors.workEmail === "string" && (
                   <p className="text-red-500 text-xs">
                     {formik.errors.workEmail}
