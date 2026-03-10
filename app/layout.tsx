@@ -10,7 +10,7 @@ import UTMTracker from "@/lib/utm/UtmTracker";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bangalore Plot Expo 2026",
+  title: "Bengaluru Plot Expo 2026",
   description:
     "The city's largest and most exclusive real estate showcase dedicated entirely to plot and farmland investments.",
 };
@@ -71,6 +71,7 @@ export default function RootLayout({
         <main className="mt-16">{children}</main>
         <Suspense>
           <UTMTracker />
+          <WAEnquirySection />
         </Suspense>
         <Footer />
       </body>

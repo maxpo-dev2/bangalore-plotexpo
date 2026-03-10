@@ -57,9 +57,9 @@ export default function RegistrationForm({ type }: { type: string }) {
         ? Yup.string().required("Budget is required")
         : Yup.string(),
 
-    bangalorePart:
+    bengaluruPart:
       type === "visitor"
-        ? Yup.string().required("Bangalore part is required")
+        ? Yup.string().required("Bengaluru part is required")
         : Yup.string(),
 
     termsAccepted: Yup.boolean().oneOf(
@@ -82,7 +82,7 @@ export default function RegistrationForm({ type }: { type: string }) {
       industry: "",
       jobTitle: "",
       budget: "",
-      bangalorePart: "",
+      bengaluruPart: "",
       message: "",
       termsAccepted: true,
       marketingConsent: true,
@@ -221,11 +221,11 @@ export default function RegistrationForm({ type }: { type: string }) {
                 </div>
 
                 <div>
-                  <Label>Bangalore Area *</Label>
+                  <Label>Bengaluru Area *</Label>
                   <Select
-                    value={formik.values.bangalorePart}
+                    value={formik.values.bengaluruPart}
                     onValueChange={(v) =>
-                      formik.setFieldValue("bangalorePart", v)
+                      formik.setFieldValue("bengaluruPart", v)
                     }
                   >
                     <SelectTrigger>
@@ -240,10 +240,10 @@ export default function RegistrationForm({ type }: { type: string }) {
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
-                  {formik.touched.bangalorePart &&
-                    typeof formik.errors.bangalorePart === "string" && (
+                  {formik.touched.bengaluruPart &&
+                    typeof formik.errors.bengaluruPart === "string" && (
                       <p className="text-red-500 text-xs">
-                        {formik.errors.bangalorePart}
+                        {formik.errors.bengaluruPart}
                       </p>
                     )}
                 </div>

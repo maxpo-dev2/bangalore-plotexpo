@@ -3,7 +3,7 @@ const EVENT_DATE = process.env.EVENT_DATE || "March 14-15, 2026";
 const EVENT_WEBSITE = process.env.EVENT_WEBSITE || "https://www.plotexpo.in/";
 const EVENT_EMAIL = process.env.EVENT_EMAIL || "annu@mindsquaremedia.com";
 const EVENT_VENUE =
-  process.env.EVENT_VENUE || "Shubh Conventional Center, JP Nagar, Bangalore";
+  process.env.EVENT_VENUE || "Shubh Conventional Center, JP Nagar, Bengaluru";
 
 export const ThankYouEmailHandler = ({
   name,

@@ -225,7 +225,7 @@
 //           <div className="w-full h-[1000px] overflow-hidden rounded-lg">
 //             <img
 //               src="/images/registration.png"
-//               alt="Bangalore Palace"
+//               alt="Bengaluru Palace"
 //               className="object-cover w-full h-full"
 //             />
 //           </div>
