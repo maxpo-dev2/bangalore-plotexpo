@@ -6,6 +6,7 @@ import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/footer";
 import { Suspense } from "react";
 import UTMTracker from "@/lib/utm/UtmTracker";
+import WAEnquirySection from "./components/WAEnquiry";
 
 const inter = Inter({ subsets: ["latin"] });
 
