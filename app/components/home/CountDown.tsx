@@ -12,7 +12,7 @@ const Countdown = ({ targetDate }: CountdownProps) => {
   const eventDate = new Date(targetDate).getTime();
 
   const [timeLeft, setTimeLeft] = useState(eventDate - Date.now());
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(true);
 
   const [windowSize, setWindowSize] = useState({
     width: 0,
