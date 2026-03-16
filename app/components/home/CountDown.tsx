@@ -59,27 +59,30 @@ const Countdown = ({ targetDate }: CountdownProps) => {
             colors={["#16a34a", "#ffffff"]}
           />
           <div className="flex justify-center mt-8 px-4">
-            <Link
-              href="https://maps.app.goo.gl/DzWErgEGDnDtLJS49"
-              className="group w-full max-w-xl"
-            >
+            <div className="group w-full max-w-xl">
               <div className="bg-white/70 backdrop-blur-md border border-green-200 shadow-xl rounded-2xl px-6 py-6 md:px-10 md:py-8 text-center transition-all duration-300 hover:shadow-2xl  cursor-pointer">
                 <p className="text-2xl sm:text-3xl md:text-5xl font-bold text-green-700 mb-2">
-                  Live Now!..
+                  Thank You!..
                 </p>
 
-                <p className="text-sm md:text-lg text-green-800 font-medium">
-                  See you at{" "}
+                <p className="text-lg md:text-xl text-green-800 font-medium mb-4">
+                  The event has successfully concluded.
+                </p>
+
+                <p className="text-sm md:text-base text-gray-700">
+                  We sincerely thank all the{" "}
                   <span className="font-semibold">
-                    Shubh Convention, JP Nagar
-                  </span>
+                    Exhibitors and Participants
+                  </span>{" "}
+                  for being part of the event and making it a wonderful
+                  experience.
                 </p>
 
-                <div className="mt-4 inline-block bg-green-600 text-white text-sm md:text-base font-semibold px-5 py-2 rounded-lg group-hover:bg-green-700 transition">
-                  View Event Location
-                </div>
+                <p className="text-xs text-black mt-4">
+                  We look forward to seeing you again at our future events.
+                </p>
               </div>
-            </Link>
+            </div>
           </div>
         </>
       ) : (
