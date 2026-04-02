@@ -3,12 +3,15 @@ import React from "react";
 import { Button } from "../ui/button";
 
 const images = [
-  "bpe25-1.jpg",
-  "bpe25-2.jpg",
-  "bpe25-3.jpg",
-  "bpe25-4.jpg",
-  "bpe25-5.jpg",
-  "bpe25-6.jpg",
+  "2026/bpe26-15.webp",
+  "2026/bpe26-1.webp",
+  "2026/bpe26-3.webp",
+  "2026/bpe26-4.webp",
+  "2026/bpe26-14.webp",
+  "2026/bpe26-6.webp",
+  "2026/bpe26-7.webp",
+  "2026/bpe26-8.webp",
+  "2026/bpe26-9.webp",
 ];
 
 const PastEventSection = () => {
@@ -34,7 +37,7 @@ const PastEventSection = () => {
               className="group relative overflow-hidden rounded-xl aspect-square shadow-sm"
             >
               <img
-                src={`/images/past-events/2025/${img}`}
+                src={`/images/past-events/${img}`}
                 alt={`Past Event ${i + 1}`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -45,7 +48,7 @@ const PastEventSection = () => {
               {/* Hover Text */}
               <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <p className="text-white font-semibold text-sm">
-                  Bengaluru Plot Expo 2025
+                  Bengaluru Plot Expo 2026
                 </p>
               </div>
             </div>
