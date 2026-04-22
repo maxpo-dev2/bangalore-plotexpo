@@ -78,40 +78,40 @@ const ThankYouPage = () => {
       bold: "You are now part of the Bengaluru Plot Expo 2026 community",
       description:
         "Our team will be in touch with you soon to discuss your exhibition requirements.",
-      date: "14-15 March 2026",
-      venue: "Shubh Convention Center, J P Nagar Banglore",
+      date: "27-28 June 2026",
+      venue: "White House Convention Center,  HSR layout, Bengaluru",
     },
     visitor: {
       title: "Thank You For Your Visitor Registration!",
       bold: "You are now registered for Bengaluru Plot Expo 2026",
       description:
         "We look forward to seeing you at the event. You will receive further details via email.",
-      date: "14-15 March 2026",
-      venue: "Shubh Convention Center, J P Nagar Banglore",
+      date: "27-28 June 2026",
+      venue: "White House Convention Center,  HSR layout, Bengaluru",
     },
     sponsor: {
       title: "Thank You For Your Sponsorship Interest!",
       bold: "You are now part of the Bengaluru Plot Expo 2026 community",
       description:
         "Our sponsorship team will contact you shortly to discuss partnership opportunities.",
-      date: "14-15 March 2026",
-      venue: "Shubh Convention Center, J P Nagar Banglore",
+      date: "27-28 June 2026",
+      venue: "White House Convention Center,  HSR layout, Bengaluru",
     },
     enquiry: {
       title: "Thank You For Your Enquiry!",
       bold: "We have received your message about Bengaluru Plot Expo 2026",
       description:
         "Our team will get back to you within 24 hours with the information you requested.",
-      date: "14-15 March 2026",
-      venue: "Shubh Convention Center, J P Nagar Banglore",
+      date: "27-28 June 2026",
+      venue: "White House Convention Center,  HSR layout, Bengaluru",
     },
     registration: {
       title: "Thank You For Your Registration!",
       bold: "You are now registered for Bengaluru Plot Expo 2026",
       description:
         "Our team will be in touch with you soon with further details.",
-      date: "14-15 March 2026",
-      venue: "Shubh Convention Center, J P Nagar Banglore",
+      date: "27-28 June 2026",
+      venue: "White House Convention Center,  HSR layout, Bengaluru",
     },
   };
 

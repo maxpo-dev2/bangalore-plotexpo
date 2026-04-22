@@ -55,7 +55,7 @@ const DateBadge = () => {
           px-4 py-3
         "
       >
-        SHUBH, CONVENTION CENTER, J P NAGAR, BANGALORE
+        WHITE HOUSE CONVENTION CENTER, HSR LAYOUT, BENGALURU
       </p>
     </div>
   );

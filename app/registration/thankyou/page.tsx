@@ -61,9 +61,9 @@
 //             <div className="space-y-4 text-gray-600">
 //               <p className="text-base">Our team will be in touch with you soon.</p>
 //               <p className="text-base">
-//                 We look forward to welcoming you at theShubh Convention Center, J P Nagar Banglore
+//                 We look forward to welcoming you at theWhite House Convention Center,  HSR layout, Bengaluru
 //               </p>
-//               <p className="text-base font-medium">14-15 March 2026</p>
+//               <p className="text-base font-medium">27-28 June 2026</p>
 //             </div>
 
 //             {/* Buttons */}

@@ -1,5 +1,10 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+import Link from "next/link";
 
 const container = {
   hidden: {},
@@ -18,40 +23,49 @@ const item = {
 const points = [
   {
     title: "Lead Generation Opportunity",
-    text: "Connect with a high-intent audience of business owners and salaried professionals.",
+    text: "Connect with a high-intent audience of business owners and salaried professionals actively looking to invest.",
   },
   {
     title: "Cost-Effective Advertising",
-    text: "Promote your projects directly to a focused and affluent crowd.",
+    text: "Promote your projects directly to a focused, affluent crowd at a fraction of traditional marketing costs.",
   },
   {
     title: "Diverse Plot Categories",
-    text: "Farm lands, villa plots, society plots – all in one place.",
+    text: "Farmlands, villa plots, society plots - showcase your complete portfolio in one premium setting.",
   },
   {
     title: "Project Showcasing & Liquidation",
-    text: "Move inventory and attract serious buyers.",
+    text: "Move inventory faster and attract serious buyers who are ready to make investment decisions.",
   },
   {
     title: "Brand Visibility",
-    text: "Increase recognition among Bengaluru's real estate investment community.",
+    text: "Increase brand recognition among Bengaluru's elite real estate investment community.",
   },
   {
     title: "Networking",
-    text: "Meet investors, partners, and potential collaborators.",
+    text: "Meet investors, channel partners, and potential collaborators from across the industry.",
   },
 ];
 
 const WhyExhibit = () => {
-  return (
-    <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-14">
-          Why Exhibit at BPE 2026?
-        </h2>
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
-        {/* Grid */}
+  return (
+    <section ref={ref} className="py-20 bg-white">
+      <div className="section-container">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="text-[#00620F] text-sm font-semibold uppercase tracking-widest">
+            Exhibitor Benefits
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mt-3 mb-4 leading-tight">
+            Why Exhibit at BPE 2026?
+          </h2>
+          <p className="text-[#444444] text-lg leading-relaxed">
+            Position your brand in front of Bengaluru&apos;s most active real
+            estate investors - and convert them into buyers.
+          </p>
+        </div>
+
         <motion.div
           variants={container}
           initial="hidden"
@@ -67,7 +81,7 @@ const WhyExhibit = () => {
             >
               {/* Ring */}
               <div className="relative mb-6">
-                <div className="w-44 h-44 rounded-full border-[20px] border-secondary flex items-center justify-center">
+                <div className="w-44 h-44 rounded-full border-[20px] border-[#b0ffaa] flex items-center justify-center ">
                   <p className="text-md font-semibold text-black px-4">
                     {point.title}
                   </p>
@@ -87,14 +101,19 @@ const WhyExhibit = () => {
           ))}
         </motion.div>
 
-        {/* Footer text */}
-        <div className="text-center max-w-3xl mx-auto mt-16">
-          <p className="text-black">
-            Whether you're a developer aiming to boost project visibility or an
-            investor seeking your next great opportunity,{" "}
-            <span className="font-semibold text-primary">#BPE 2026</span> is
-            where connections are made and dreams take shape.
+        {/* Bottom CTA callout */}
+        <div className="mt-14 p-8 bg-[#e6f4ea] rounded-2xl max-w-3xl mx-auto text-center">
+          <p className="text-[#444444] text-base md:text-lg mb-6 leading-relaxed">
+            Whether you&apos;re a developer aiming to boost project visibility
+            or an investor seeking your next opportunity,{" "}
+            <span className="font-semibold text-[#00620F]">#BPE 2026</span> is
+            where connections are made and deals are closed.
           </p>
+          <Link href="/registration?type=exhibitor">
+            <button className="px-8 py-3.5 bg-[#00620F] text-white font-semibold rounded-xl hover:bg-green-700 transition-colors duration-200">
+              Book Your Stall Today
+            </button>
+          </Link>
         </div>
       </div>
     </section>
