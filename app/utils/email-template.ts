@@ -6,6 +6,7 @@ const EVENT_VENUE =
   process.env.EVENT_VENUE ||
   "White House Convention Center,  HSR layout, Bengaluru";
 
+
 export const ThankYouEmailHandler = ({
   name,
   visitorPassId,
