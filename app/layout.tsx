@@ -4,11 +4,14 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/footer";
+import { Suspense } from "react";
+import UTMTracker from "@/lib/utm/UtmTracker";
+import WAEnquirySection from "./components/WAEnquiry";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bangalore Plot Expo 2026",
+  title: "Bengaluru Plot Expo 2026",
   description:
     "The city's largest and most exclusive real estate showcase dedicated entirely to plot and farmland investments.",
 };
@@ -66,7 +69,11 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Navbar />
-        <main className="mt-20">{children}</main>
+        <main className="mt-16">{children}</main>
+        <Suspense>
+          <UTMTracker />
+          <WAEnquirySection />
+        </Suspense>
         <Footer />
       </body>
     </html>

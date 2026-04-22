@@ -1,5 +1,5 @@
 {
-  "name": "bangalore-plotexpo",
+  "name": "bengaluru-plotexpo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,19 +15,22 @@
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "formik": "^2.4.9",
     "framer-motion": "^12.31.0",
     "lucide-react": "^0.294.0",
     "next": "^16.0.10",
     "nodemailer": "^7.0.3",
     "qrcode": "^1.5.4",
     "react": "^18",
+    "react-confetti": "^6.4.0",
     "react-countup": "^6.5.3",
     "react-dom": "^18",
     "react-intersection-observer": "^10.0.2",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^11.1.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@types/node": "^20",

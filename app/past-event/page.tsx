@@ -4,42 +4,68 @@ import Image from "next/image";
 import DownloadButton from "../components/DownloadButton";
 
 const pastEventImages = [
-  "/images/past-events/2025/bpe25-1.jpg",
-  "/images/past-events/2025/bpe25-2.jpg",
-  "/images/past-events/2025/bpe25-3.jpg",
-  "/images/past-events/2025/bpe25-4.jpg",
-  "/images/past-events/2025/bpe25-5.jpg",
-  "/images/past-events/2025/bpe25-6.jpg",
-  "/images/past-events/2025/bpe25-7.jpg",
-  "/images/past-events/2025/bpe25-8.jpg",
-  "/images/past-events/2025/bpe25-9.jpg",
-  "/images/past-events/2025/bpe25-10.jpg",
-  "/images/past-events/2025/bpe25-11.jpg",
-  "/images/past-events/2025/bpe25-12.jpg",
-  "/images/past-events/2025/bpe25-13.jpg",
-  "/images/past-events/2025/bpe25-14.jpg",
-  "/images/past-events/2025/bpe25-15.jpg",
-  "/images/past-events/2025/bpe25-16.jpg",
-  "/images/past-events/2025/bpe25-17.jpg",
-  "/images/past-events/2025/bpe25-18.jpg",
-  "/images/2020events/bpe-2.jpg",
-  "/images/2020events/bpe-4.jpg",
-  "/images/2020events/bpe-6.jpg",
-  "/images/2020events/bpe-7.jpg",
-  "/images/2020events/bpe-9.jpg",
-  "/images/2020events/bpe-12.jpg",
-  "/images/2020events/bpe-13.jpg",
-  "/images/2020events/bpe-14.jpg",
-  "/images/2020events/bpe-18.jpg",
-  "/images/2020events/bpe-20.jpg",
-  "/images/2020events/bpe-21.jpg",
-  "/images/2020events/bpe-22.jpg",
-  "/images/2020events/bpe-23.jpg",
-  "/images/2020events/bpe-26.jpg",
-  "/images/2020events/bpe-27.jpg",
-  "/images/2020events/bpe-28.jpg",
-  "/images/2020events/bpe-29.jpg",
-  "/images/2020events/bpe-30.jpg",
+  "2026/bpe26-1.webp",
+  "2026/bpe26-2.webp",
+  "2026/bpe26-3.webp",
+  "2026/bpe26-4.webp",
+  "2026/bpe26-5.webp",
+  "2026/bpe26-6.webp",
+  "2026/bpe26-7.webp",
+  "2026/bpe26-8.webp",
+  "2026/bpe26-9.webp",
+  "2026/bpe26-10.webp",
+  "2026/bpe26-11.webp",
+  "2026/bpe26-12.webp",
+  "2026/bpe26-13.webp",
+  "2026/bpe26-14.webp",
+  "2026/bpe26-15.webp",
+  "2026/bpe26-16.webp",
+  "2026/bpe26-17.webp",
+  "2026/bpe26-18.webp",
+  "2026/bpe26-19.webp",
+  "2026/bpe26-20.webp",
+  "2026/bpe26-21.webp",
+  "2026/bpe26-22.webp",
+  "2026/bpe26-23.webp",
+  "2026/bpe26-24.webp",
+
+  "2025/bpe25-1.webp",
+  "2025/bpe25-2.webp",
+  "2025/bpe25-3.webp",
+  "2025/bpe25-4.webp",
+  "2025/bpe25-5.webp",
+  "2025/bpe25-6.webp",
+  "2025/bpe25-7.webp",
+  "2025/bpe25-8.webp",
+  "2025/bpe25-9.webp",
+  "2025/bpe25-10.webp",
+  "2025/bpe25-11.webp",
+  "2025/bpe25-12.webp",
+  "2025/bpe25-13.webp",
+  "2025/bpe25-14.webp",
+  "2025/bpe25-15.webp",
+  "2025/bpe25-16.webp",
+  "2025/bpe25-17.webp",
+  "2025/bpe25-18.webp",
+
+  "2020/bpe20-1.webp",
+  "2020/bpe20-2.webp",
+  "2020/bpe20-3.webp",
+  "2020/bpe20-4.webp",
+  "2020/bpe20-5.webp",
+  "2020/bpe20-6.webp",
+  "2020/bpe20-7.webp",
+  "2020/bpe20-8.webp",
+  "2020/bpe20-9.webp",
+  "2020/bpe20-10.webp",
+  "2020/bpe20-11.webp",
+  "2020/bpe20-12.webp",
+  "2020/bpe20-13.webp",
+  "2020/bpe20-14.webp",
+  "2020/bpe20-15.webp",
+  "2020/bpe20-16.webp",
+  "2020/bpe20-17.webp",
+  "2020/bpe20-18.webp",
 ];
 
 export default function PastEventPage() {
@@ -67,14 +93,19 @@ export default function PastEventPage() {
               className="group relative h-64 rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-all duration-300"
             >
               <Image
-                src={src}
+                src={"/images/past-events/" + src}
                 alt={`Event ${index + 1}`}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
 
-              {/* subtle overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition" />
+              {/* Hover Text */}
+              <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <p className="text-white font-semibold text-sm">
+                  Bengaluru Plot Expo {src.slice(0, 4) ?? ""}
+                </p>
+              </div>
             </div>
           ))}
         </div>

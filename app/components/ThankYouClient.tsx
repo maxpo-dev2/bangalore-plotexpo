@@ -64,9 +64,9 @@ export default function ThankYouClient() {
               </p>
               <p className="text-base">
                 We look forward to welcoming you at the White House Convention
-                Centre HSR Layout Next to BDA Complex
+                Center, HSR layout, Bengaluru
               </p>
-              <p className="text-base font-medium">26 July – 27 July 2026</p>
+              <p className="text-base font-medium">27-28 June 2026</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">

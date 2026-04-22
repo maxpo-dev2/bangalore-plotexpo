@@ -75,43 +75,43 @@ const ThankYouPage = () => {
   > = {
     exhibitor: {
       title: "Thank You For Your Exhibitor Registration!",
-      bold: "You are now part of the Bangalore Plot Expo 2026 community",
+      bold: "You are now part of the Bengaluru Plot Expo 2026 community",
       description:
         "Our team will be in touch with you soon to discuss your exhibition requirements.",
-      date: "13-14 March 2026",
-      venue: "White House Convention Centre, HSR Layout Next to BDA Complex",
+      date: "27-28 June 2026",
+      venue: "White House Convention Center,  HSR layout, Bengaluru",
     },
     visitor: {
       title: "Thank You For Your Visitor Registration!",
-      bold: "You are now registered for Bangalore Plot Expo 2026",
+      bold: "You are now registered for Bengaluru Plot Expo 2026",
       description:
         "We look forward to seeing you at the event. You will receive further details via email.",
-      date: "13-14 March 2026",
-      venue: "White House Convention Centre, HSR Layout Next to BDA Complex",
+      date: "27-28 June 2026",
+      venue: "White House Convention Center,  HSR layout, Bengaluru",
     },
     sponsor: {
       title: "Thank You For Your Sponsorship Interest!",
-      bold: "You are now part of the Bangalore Plot Expo 2026 community",
+      bold: "You are now part of the Bengaluru Plot Expo 2026 community",
       description:
         "Our sponsorship team will contact you shortly to discuss partnership opportunities.",
-      date: "13-14 March 2026",
-      venue: "White House Convention Centre, HSR Layout Next to BDA Complex",
+      date: "27-28 June 2026",
+      venue: "White House Convention Center,  HSR layout, Bengaluru",
     },
     enquiry: {
       title: "Thank You For Your Enquiry!",
-      bold: "We have received your message about Bangalore Plot Expo 2026",
+      bold: "We have received your message about Bengaluru Plot Expo 2026",
       description:
         "Our team will get back to you within 24 hours with the information you requested.",
-      date: "13-14 March 2026",
-      venue: "White House Convention Centre, HSR Layout Next to BDA Complex",
+      date: "27-28 June 2026",
+      venue: "White House Convention Center,  HSR layout, Bengaluru",
     },
     registration: {
       title: "Thank You For Your Registration!",
-      bold: "You are now registered for Bangalore Plot Expo 2026",
+      bold: "You are now registered for Bengaluru Plot Expo 2026",
       description:
         "Our team will be in touch with you soon with further details.",
-      date: "13-14 March 2026",
-      venue: "White House Convention Centre, HSR Layout Next to BDA Complex",
+      date: "27-28 June 2026",
+      venue: "White House Convention Center,  HSR layout, Bengaluru",
     },
   };
 
@@ -121,7 +121,7 @@ const ThankYouPage = () => {
     <div className="min-h-screen flex flex-col items-center justify-start text-center px-4 py-12 bg-white mt-8">
       {/* Header Card */}
       <div className="w-full max-w-2xl rounded-t-lg py-4 text-white font-bold text-2xl bg-[#406E24] mt-8">
-        Bangalore Plot Expo 2026 - {heading}
+        Bengaluru Plot Expo 2026 - {heading}
       </div>
 
       {/* Checkmark */}
@@ -232,14 +232,14 @@ const ThankYouPage = () => {
         <p className="text-sm text-gray-500 mb-2">
           For any queries, please contact us at{" "}
           <a
-            href="mailto:info@bangaloreplotexpo.com"
+            href="mailto:info@bengaluruplotexpo.com"
             className="text-[#406E24] hover:underline"
           >
-            info@bangaloreplotexpo.com
+            info@bengaluruplotexpo.com
           </a>
         </p>
         <p className="text-sm text-gray-500">
-          Follow us on social media for the latest updates about Bangalore Plot
+          Follow us on social media for the latest updates about Bengaluru Plot
           Expo 2026
         </p>
       </div>

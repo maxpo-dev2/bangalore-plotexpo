@@ -1,6 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { Label } from "@/app/components/ui/label";
@@ -13,62 +16,133 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/app/components/ui/select";
-import { useRouter } from "next/navigation";
 
 export default function RegistrationForm({ type }: { type: string }) {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    phoneNumber: "",
-    workEmail: "",
-    companyName: "",
-    industry: "",
-    jobTitle: "",
-    budget: "",
-    bangalorePart: "",
-    message: "",
-    termsAccepted: true,
-    marketingConsent: true,
-    type: "",
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .trim()
+      .min(2, "Name must be at least 2 characters")
+      .max(80, "Name is too long")
+      .required("Name is required"),
+
+    workEmail: Yup.string()
+      .trim()
+      .email("Enter a valid email address")
+      .required("Email is required"),
+
+    phoneNumber: Yup.string()
+      .required("Phone number is required")
+      .test("valid-phone", "Enter a valid Indian phone number", (value) => {
+        if (!value) return false;
+
+        const cleaned = value.replace(/[^\d]/g, "");
+
+        return /^(91)?[6-9]\d{9}$/.test(cleaned);
+      }),
+
+    companyName:
+      type === "exhibitor"
+        ? Yup.string().required("Company name is required")
+        : Yup.string(),
+
+    industry:
+      type === "exhibitor"
+        ? Yup.string().required("Industry is required")
+        : Yup.string(),
+
+    budget:
+      type === "visitor"
+        ? Yup.string().required("Budget is required")
+        : Yup.string(),
+
+    bengaluruPart:
+      type === "visitor"
+        ? Yup.string().required("Bengaluru part is required")
+        : Yup.string(),
+
+    termsAccepted: Yup.boolean().oneOf(
+      [true],
+      "You must accept terms & conditions",
+    ),
+
+    marketingConsent: Yup.boolean().oneOf(
+      [true],
+      "You must accept marketing consent",
+    ),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      phoneNumber: "",
+      workEmail: "",
+      companyName: "",
+      industry: "",
+      jobTitle: "",
+      budget: "",
+      bengaluruPart: "",
+      message: "",
+      termsAccepted: true,
+      marketingConsent: true,
+      utm_source: "direct",
+      utm_medium: "website",
+      utm_campaign: "direct_campaign",
+      type: type || "",
+    },
+
+    validationSchema,
+
+    onSubmit: async (values: any, { setSubmitting }) => {
+      try {
+        const utmKeys = [
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_term",
+          "utm_content",
+          "utm_id",
+        ];
+
+        utmKeys.forEach((key) => {
+          const value = sessionStorage.getItem(key);
+          if (value) values[key] = value;
+        });
+
+        const input = {
+          utmSource: values.utm_source,
+          utmMedium: values.utm_medium,
+          utmCampaign: values.utm_campaign,
+          ...values,
+        };
+
+        const res = await fetch(`/api/registration?type=${type}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(input),
+        });
+
+        if (res.ok) {
+          router.push(`/registration/thankyou?type=${type}`);
+        } else {
+          alert("Thank you, we will contact you soon");
+        }
+      } catch {
+        alert("Something went wrong");
+      } finally {
+        setSubmitting(false);
+      }
+    },
   });
 
   useEffect(() => {
-    if (type) setFormData((p) => ({ ...p, type }));
+    if (type) formik.setFieldValue("type", type);
   }, [type]);
 
-  const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const res = await fetch(`/api/registration?type=${type}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        router.push(`/registration/thankyou?type=${type}`);
-      } else {
-        alert("Submission failed");
-      }
-    } catch {
-      alert("Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <section className="max-w-6xl mx-auto px-4 py-14">
+    <section className="max-w-6xl mx-auto px-4 py-14 bg-white text-black bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        {/* FORM */}
         <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
           <h1 className="text-lg md:text-xl font-semibold mb-6">
             {type === "exhibitor" && "Exhibitor Registration"}
@@ -78,67 +152,86 @@ export default function RegistrationForm({ type }: { type: string }) {
             {!type && "General Enquiry"}
           </h1>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Name + Phone */}
+          <form onSubmit={formik.handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <Label>Name</Label>
+                <Label>Name *</Label>
                 <Input
+                  name="name"
                   placeholder="Full Name"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange("name", e.target.value)}
-                  required
+                  value={formik.values.name}
+                  onChange={formik.handleChange}
                 />
+                {formik.touched.name &&
+                  typeof formik.errors.name === "string" && (
+                    <p className="text-red-500 text-xs">{formik.errors.name}</p>
+                  )}
               </div>
 
               <div>
-                <Label>Phone</Label>
+                <Label>Phone *</Label>
                 <Input
+                  name="phoneNumber"
                   placeholder="Phone Number"
-                  value={formData.phoneNumber}
-                  onChange={(e) =>
-                    handleInputChange("phoneNumber", e.target.value)
-                  }
-                  required
+                  value={formik.values.phoneNumber}
+                  onChange={formik.handleChange}
                 />
+                {formik.touched.phoneNumber &&
+                  typeof formik.errors.phoneNumber === "string" && (
+                    <p className="text-red-500 text-xs">
+                      {formik.errors.phoneNumber}
+                    </p>
+                  )}
               </div>
             </div>
 
-            {/* Email */}
             <div>
-              <Label>Email</Label>
+              <Label>Email *</Label>
               <Input
+                name="workEmail"
                 type="email"
                 placeholder="Email Address"
-                value={formData.workEmail}
-                onChange={(e) => handleInputChange("workEmail", e.target.value)}
-                required
+                value={formik.values.workEmail}
+                onChange={formik.handleChange}
               />
+              {formik.touched.workEmail &&
+                typeof formik.errors.workEmail === "string" && (
+                  <p className="text-red-500 text-xs">
+                    {formik.errors.workEmail}
+                  </p>
+                )}
             </div>
 
-            {/* Conditional fields */}
             {type === "visitor" && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label>Budget</Label>
+                  <Label>Budget *</Label>
                   <Input
+                    name="budget"
                     placeholder="Your budget"
-                    value={formData.budget}
-                    onChange={(e) =>
-                      handleInputChange("budget", e.target.value)
-                    }
+                    value={formik.values.budget}
+                    onChange={formik.handleChange}
                   />
+                  {formik.touched.budget &&
+                    typeof formik.errors.budget === "string" && (
+                      <p className="text-red-500 text-xs">
+                        {formik.errors.budget}
+                      </p>
+                    )}
                 </div>
 
                 <div>
-                  <Label>Bangalore Area</Label>
+                  <Label>Bengaluru Area *</Label>
                   <Select
-                    value={formData.bangalorePart}
-                    onValueChange={(v) => handleInputChange("bangalorePart", v)}
+                    value={formik.values.bengaluruPart}
+                    onValueChange={(v) =>
+                      formik.setFieldValue("bengaluruPart", v)
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select Area" />
                     </SelectTrigger>
+
                     <SelectContent className="bg-white">
                       <SelectItem value="east">East</SelectItem>
                       <SelectItem value="west">West</SelectItem>
@@ -147,6 +240,12 @@ export default function RegistrationForm({ type }: { type: string }) {
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
+                  {formik.touched.bengaluruPart &&
+                    typeof formik.errors.bengaluruPart === "string" && (
+                      <p className="text-red-500 text-xs">
+                        {formik.errors.bengaluruPart}
+                      </p>
+                    )}
                 </div>
               </div>
             )}
@@ -154,25 +253,31 @@ export default function RegistrationForm({ type }: { type: string }) {
             {type === "exhibitor" && (
               <>
                 <div>
-                  <Label>Company Name</Label>
+                  <Label>Company Name *</Label>
                   <Input
+                    name="companyName"
                     placeholder="Company Name"
-                    value={formData.companyName}
-                    onChange={(e) =>
-                      handleInputChange("companyName", e.target.value)
-                    }
+                    value={formik.values.companyName}
+                    onChange={formik.handleChange}
                   />
+                  {formik.touched.companyName &&
+                    typeof formik.errors.companyName === "string" && (
+                      <p className="text-red-500 text-xs">
+                        {formik.errors.companyName}
+                      </p>
+                    )}
                 </div>
 
                 <div>
-                  <Label>Industry</Label>
+                  <Label>Industry *</Label>
                   <Select
-                    value={formData.industry}
-                    onValueChange={(v) => handleInputChange("industry", v)}
+                    value={formik.values.industry}
+                    onValueChange={(v) => formik.setFieldValue("industry", v)}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select Industry" />
                     </SelectTrigger>
+
                     <SelectContent className="bg-white">
                       <SelectItem value="real-estate">Real Estate</SelectItem>
                       <SelectItem value="farmland">Farmland</SelectItem>
@@ -180,28 +285,34 @@ export default function RegistrationForm({ type }: { type: string }) {
                       <SelectItem value="finance">Finance</SelectItem>
                     </SelectContent>
                   </Select>
+                  {formik.touched.industry &&
+                    typeof formik.errors.industry === "string" && (
+                      <p className="text-red-500 text-xs">
+                        {formik.errors.industry}
+                      </p>
+                    )}
                 </div>
               </>
             )}
 
-            {/* Message */}
             <div>
               <Label>Message</Label>
               <Textarea
                 rows={3}
+                name="message"
                 placeholder="Optional message"
-                value={formData.message}
-                onChange={(e) => handleInputChange("message", e.target.value)}
+                value={formik.values.message}
+                onChange={formik.handleChange}
               />
             </div>
 
-            {/* Checkboxes */}
             <div className="space-y-2 text-sm">
               <div className="flex gap-2">
                 <Checkbox
-                  checked={formData.termsAccepted}
+                  checked={formik.values.termsAccepted}
+                  className="text-white"
                   onCheckedChange={(v) =>
-                    handleInputChange("termsAccepted", v as boolean)
+                    formik.setFieldValue("termsAccepted", v)
                   }
                 />
                 <span>
@@ -211,29 +322,41 @@ export default function RegistrationForm({ type }: { type: string }) {
                   </a>
                 </span>
               </div>
+              {formik.errors.termsAccepted &&
+                typeof formik.errors.termsAccepted === "string" && (
+                  <p className="text-red-500 text-xs">
+                    {formik.errors.termsAccepted}
+                  </p>
+                )}
 
               <div className="flex gap-2">
                 <Checkbox
-                  checked={formData.marketingConsent}
+                  checked={formik.values.marketingConsent}
+                  className="text-white"
                   onCheckedChange={(v) =>
-                    handleInputChange("marketingConsent", v as boolean)
+                    formik.setFieldValue("marketingConsent", v)
                   }
                 />
                 <span>I agree to receive updates and offers</span>
               </div>
+              {formik.errors.marketingConsent &&
+                typeof formik.errors.marketingConsent === "string" && (
+                  <p className="text-red-500 text-xs">
+                    {formik.errors.marketingConsent}
+                  </p>
+                )}
             </div>
 
             <Button
               type="submit"
-              disabled={!formData.termsAccepted || loading}
+              disabled={!formik.values.termsAccepted || formik.isSubmitting}
               className="w-full bg-green-700 hover:bg-green-800"
             >
-              {loading ? "Submitting..." : "Submit"}
+              {formik.isSubmitting ? "Submitting..." : "Submit"}
             </Button>
           </form>
         </div>
 
-        {/* IMAGE */}
         <div className="hidden lg:block">
           <div className="h-[520px] rounded-xl overflow-hidden shadow-lg">
             <img

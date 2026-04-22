@@ -1,0 +1,16 @@
+export const eventConfig = {
+  name: "Bengaluru Plot Expo 2026",
+  shortName: "BPE 2026",
+  edition: "5th Edition",
+  dateRange: "June 27-28, 2026",
+  startDate: "June 27, 2026",
+  endDate: "June 28, 2026",
+  time: "09:30 AM IST",
+  venue: "White House Convention Center",
+  address: "HSR layout, Bengaluru",
+  city: "Bengaluru",
+  phone: "+91 98451 14655",
+  email: "annu@mindsquaremedia.com",
+  whatsapp: "919845114655",
+  targetDate: "2026-03-14T09:30:00+05:30",
+} as const;

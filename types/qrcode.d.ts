@@ -1,4 +1,4 @@
-declare module 'qrcode' {
+declare module "qrcode" {
   /**
    * Generates a QR code as a data URL (base64 image).
    * @param text The text to encode into the QR code.
@@ -8,8 +8,8 @@ declare module 'qrcode' {
   export function toDataURL(
     text: string,
     options?: {
-      errorCorrectionLevel?: 'low' | 'medium' | 'quartile' | 'high';
-      type?: 'image/png' | 'image/jpeg' | 'image/webp';
+      errorCorrectionLevel?: "low" | "medium" | "quartile" | "high";
+      type?: "image/png" | "image/jpeg" | "image/webp";
       quality?: number;
       margin?: number;
       width?: number;
@@ -17,6 +17,6 @@ declare module 'qrcode' {
         dark?: string;
         light?: string;
       };
-    }
+    },
   ): Promise<string>;
 }

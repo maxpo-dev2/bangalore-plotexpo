@@ -4,8 +4,8 @@ const DateBadge = () => {
   return (
     <div
       className="
-      absolute bottom-4 right-4 ab
-        md:bottom-0 md:right-6
+      absolute  right-4 
+        bottom-0 md:right-6
         w-[90vw] max-w-1/6 md:w-auto
         bg-gradient-to-b from-secondary to-primary
         shadow-lg rounded-t-3xl overflow-hidden
@@ -55,7 +55,7 @@ const DateBadge = () => {
           px-4 py-3
         "
       >
-        SHUBH, CONVENTION CENTER, J P NAGAR, BANGALORE
+        WHITE HOUSE CONVENTION CENTER, HSR LAYOUT, BENGALURU
       </p>
     </div>
   );
