@@ -107,7 +107,7 @@ export default function WhyAttendExhibit() {
                 </li>
               ))}
             </ul>
-            <Link href="/registration?type=visitor" className="block">
+            <Link href="/register?t=visitor" className="block">
               <button className="w-full py-3.5 bg-[#00620F] text-white font-semibold rounded-xl hover:bg-green-700 transition-colors duration-200">
                 Register as Visitor →
               </button>
@@ -149,7 +149,7 @@ export default function WhyAttendExhibit() {
                 </li>
               ))}
             </ul>
-            <Link href="/registration?type=exhibitor" className="block">
+            <Link href="/register?t=exhibitor" className="block">
               <button className="w-full py-3.5 bg-white text-[#00620F] font-semibold rounded-xl hover:bg-gray-100 transition-colors duration-200">
                 Book Your Exhibition Stall →
               </button>

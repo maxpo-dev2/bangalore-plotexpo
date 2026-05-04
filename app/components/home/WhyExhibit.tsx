@@ -109,7 +109,7 @@ const WhyExhibit = () => {
             <span className="font-semibold text-[#00620F]">#BPE 2026</span> is
             where connections are made and deals are closed.
           </p>
-          <Link href="/registration?type=exhibitor">
+          <Link href="/register?t=exhibitor">
             <button className="px-8 py-3.5 bg-[#00620F] text-white font-semibold rounded-xl hover:bg-green-700 transition-colors duration-200">
               Book Your Stall Today
             </button>

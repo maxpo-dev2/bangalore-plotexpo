@@ -1,0 +1,24 @@
+query GetLeadById($id: String!) {
+  getLeadById(id: $id) {
+    awardCategory
+    companyName
+    country
+    createdAt
+    createdFrom
+    email
+    id
+    industry
+    jobTitle
+    leadType
+    message
+    name
+    phone
+    price
+    projectId
+    quantity
+    paymentStatus
+    status
+    updatedAt
+    utmId
+  }
+}

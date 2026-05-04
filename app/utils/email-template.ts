@@ -33,7 +33,7 @@ export const ThankYouEmailHandler = ({
 
           <tr>
             <td>
-              <img src="https://maxpo-storage.blr1.digitaloceanspaces.com/manual-uploads/bpe/Emailer.jpg" style="width:100%" />
+              <img src="https://maxpo-storage.blr1.digitaloceanspaces.com/projects/bpe/1777908737991-blob" style="width:100%" />
             </td>
           </tr>
 
@@ -125,7 +125,7 @@ export const ThankYouEmailHandler = ({
           </tr>
 
           <tr>
-            <td style="background:#00214d;padding:20px;text-align:center;">
+            <td style="background:#000000;padding:20px;text-align:center;">
               <p style="color:#fff;font-size:12px;">
                 ©️ 2026 ${EVENT_NAME}. All rights reserved.
               </p>

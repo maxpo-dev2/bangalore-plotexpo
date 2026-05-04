@@ -1,0 +1,14 @@
+query getInvestorsByProject($projectId: String!) {
+  getInvestorsByProject(projectId: $projectId) {
+    companyLogo
+    companyName
+    createdAt
+    designation
+    id
+    image
+    description
+    linkedinUrl
+    name
+    projectId
+  }
+}

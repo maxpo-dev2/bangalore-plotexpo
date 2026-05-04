@@ -1,0 +1,3 @@
+mutation UploadLeadImage($input: uploadLeadImageInput!) {
+  uploadLeadImage(input: $input)
+}

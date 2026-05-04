@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { Instagram, Linkedin, Facebook, Phone, Mail, MapPin } from "lucide-react";
+import {
+  Instagram,
+  Linkedin,
+  Facebook,
+  Phone,
+  Mail,
+  MapPin,
+} from "lucide-react";
 import { eventConfig } from "@/config/event";
 
 const socialLinks = [
@@ -34,9 +41,9 @@ export default function Footer() {
               className="h-20 w-auto object-contain mb-5 self-start"
             />
             <p className="text-green-100 text-sm leading-relaxed max-w-xs mb-6">
-              Bengaluru Plot Expo is the city&apos;s premier platform dedicated to
-              plotted developments, farmland investments, and high-growth real
-              estate opportunities.
+              Bengaluru Plot Expo is the city&apos;s premier platform dedicated
+              to plotted developments, farmland investments, and high-growth
+              real estate opportunities.
             </p>
             {/* Social icons */}
             <div className="flex gap-3">
@@ -63,22 +70,34 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2.5 text-sm text-green-100">
                 <li>
-                  <Link href="/#about" className="hover:text-white transition-colors">
+                  <Link
+                    href="/#about"
+                    className="hover:text-white transition-colors"
+                  >
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/past-event" className="hover:text-white transition-colors">
+                  <Link
+                    href="/past-event"
+                    className="hover:text-white transition-colors"
+                  >
                     Past Events
                   </Link>
                 </li>
                 <li>
-                  <Link href="/past-event" className="hover:text-white transition-colors">
+                  <Link
+                    href="/past-event"
+                    className="hover:text-white transition-colors"
+                  >
                     Exhibition
                   </Link>
                 </li>
                 <li>
-                  <Link href="/past-event" className="hover:text-white transition-colors">
+                  <Link
+                    href="/past-event"
+                    className="hover:text-white transition-colors"
+                  >
                     Exhibitors
                   </Link>
                 </li>
@@ -93,7 +112,7 @@ export default function Footer() {
               <ul className="space-y-2.5 text-sm text-green-100">
                 <li>
                   <Link
-                    href="/registration?type=visitor"
+                    href="/register?t=visitor"
                     className="hover:text-white transition-colors"
                   >
                     As Visitor
@@ -101,7 +120,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/registration?type=exhibitor"
+                    href="/register?t=exhibitor"
                     className="hover:text-white transition-colors"
                   >
                     As Exhibitor
@@ -109,7 +128,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/registration?type=enquiry"
+                    href="/register?t=enquiry"
                     className="hover:text-white transition-colors"
                   >
                     Enquiry
@@ -125,12 +144,18 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2.5 text-sm text-green-100">
                 <li>
-                  <Link href="/terms" className="hover:text-white transition-colors">
+                  <Link
+                    href="/terms"
+                    className="hover:text-white transition-colors"
+                  >
                     Terms &amp; Conditions
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy" className="hover:text-white transition-colors">
+                  <Link
+                    href="/privacy"
+                    className="hover:text-white transition-colors"
+                  >
                     Privacy Policy
                   </Link>
                 </li>
@@ -162,10 +187,12 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="flex items-start gap-2">
-                  <MapPin size={14} className="mt-0.5 shrink-0 text-green-300" />
+                  <MapPin
+                    size={14}
+                    className="mt-0.5 shrink-0 text-green-300"
+                  />
                   <span className="leading-snug">
-                    {eventConfig.venue},{" "}
-                    {eventConfig.address}
+                    {eventConfig.venue}, {eventConfig.address}
                   </span>
                 </li>
               </ul>
@@ -177,7 +204,8 @@ export default function Footer() {
         <div className="border-t border-white/15 pt-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-green-200 text-sm text-center md:text-left">
-              © {new Date().getFullYear()} Bengaluru Plot Expo. All rights reserved.
+              © {new Date().getFullYear()} Bengaluru Plot Expo. All rights
+              reserved.
             </p>
             <img
               src="/images/mind-square-logo W (1).png"

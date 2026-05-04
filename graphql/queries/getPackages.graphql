@@ -1,0 +1,29 @@
+query GetPackagesByProject($projectId: String!) {
+  getPackagesByProject(projectId: $projectId) {
+    badge
+    createdAt
+    delegateType
+    discountType
+    discountValue
+    excludedFeatures
+    id
+    includedFeatures
+    packageType
+    price
+    projectId
+    status
+    subtitle
+    title
+  }
+}
+
+query GetPackagesPriceOptions($projectId: String!) {
+  getPackagesByProject(projectId: $projectId) {
+    id
+    price
+    discountType
+    packageType
+    delegateType
+    discountValue
+  }
+}

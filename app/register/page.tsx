@@ -51,7 +51,7 @@
 //     setLoading(true)
 
 //     try {
-// const res = await fetch(`/api/registration${window.location.search}`, {
+// const res = await fetch(`/api/register${window.location.search}`, {
 
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
@@ -60,7 +60,7 @@
 
 //       const data = await res.json()
 //       if (res.ok) {
-//         window.location.href = "/registration/thankyou"
+//         window.location.href = "/register/thankyou"
 //       } else {
 //         alert("Submission failed: " + data.error)
 //       }
@@ -224,7 +224,7 @@
 //         <div className="w-full h-full flex justify-center items-start">
 //           <div className="w-full h-[1000px] overflow-hidden rounded-lg">
 //             <img
-//               src="/images/registration.png"
+//               src="/images/register.webp"
 //               alt="Bengaluru Palace"
 //               className="object-cover w-full h-full"
 //             />
@@ -239,20 +239,20 @@
 
 import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import RegistrationForm from "@/app/components/RegistrationForm";
+import RegisterForm from "@/app/components/RegisterForm";
 
-function RegistrationWrapper() {
+function RegisterWrapper() {
   const searchParams = useSearchParams();
-  const type = searchParams.get("type") || searchParams.get("t") || "";
-  return <RegistrationForm type={type} />;
+  const type = searchParams.get("t") ?? searchParams.get("type") ?? "enquiry";
+  return <RegisterForm type={type} />;
 }
 
 export default function RegistrationPage() {
   return (
     <Suspense
-      fallback={<div className="text-center py-20 bg-white">Loading....</div>}
+      fallback={<div className="text-center py-20 bg-white ">Loading....</div>}
     >
-      <RegistrationWrapper />
+      <RegisterWrapper />
     </Suspense>
   );
 }

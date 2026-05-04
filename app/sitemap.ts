@@ -15,17 +15,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/registration?type=exhibitor`,
+      url: `${baseUrl}/register?t=exhibitor`,
       lastModified: new Date(),
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/registration?type=visitor`,
+      url: `${baseUrl}/register?t=visitor`,
       lastModified: new Date(),
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/registration?type=enquiry`,
+      url: `${baseUrl}/register?t=enquiry`,
       lastModified: new Date(),
       priority: 0.8,
     },

@@ -1,0 +1,31 @@
+query GetAgendaByProject($projectId: String!) {
+  getAgendaByProject(projectId: $projectId) {
+    id
+    date
+    title
+    sessions {
+      title
+      startTime
+      endTime
+      description
+      isBreak
+      items {
+        title
+        type
+        startTime
+        endTime
+        description
+
+        speakers {
+          isHost
+          speaker {
+            name
+            image
+            designation
+            companyName
+          }
+        }
+      }
+    }
+  }
+}

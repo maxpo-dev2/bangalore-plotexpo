@@ -7,7 +7,7 @@ import { eventConfig } from "@/config/event";
 const HeroSection = () => {
   return (
     <section
-      className="relative min-h-screen -translate-y-12 flex flex-col justify-center overflow-hidden bg-[#C6FFC2]"
+      className="relative  min-h-screen -translate-y-12 flex flex-col justify-center overflow-hidden bg-[#C6FFC2]"
       style={{
         backgroundImage: "url('/images/hero-banner.png')",
         backgroundSize: "cover",
@@ -18,7 +18,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-0" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-center section-container pt-32 pb-20 ">
+      <div className="relative z-10 flex flex-col justify-center section-container pt-40 md:pt-48 pb-24 ">
         {/* Heading (FIX: force white + shadow) */}
         <h1
           className={`${zenTokyoZoo.className} text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-bold leading-[1.1] mb-6 max-w-5xl drop-shadow-[0_2px_5px_rgba(0,0,0,0.4)]`}
@@ -34,13 +34,13 @@ const HeroSection = () => {
 
         {/* CTA */}
         <div className="flex flex-col sm:flex-row gap-4 mb-12">
-          <Link href="/registration?type=visitor">
+          <Link href="/register?t=visitor">
             <button className="px-8 py-4 bg-[#00620F] hover:bg-green-700 text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5">
               Register as Visitor
             </button>
           </Link>
 
-          <Link href="/registration?type=exhibitor">
+          <Link href="/register?t=exhibitor">
             <button className="px-8 py-4 bg-white/20 hover:bg-white/30 border border-white/40 text-white font-semibold rounded-xl backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5">
               Book Exhibition Stall
             </button>

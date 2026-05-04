@@ -26,8 +26,9 @@ export default function FinalCTA() {
         </h2>
 
         <p className="text-green-100 text-lg mb-8 leading-relaxed">
-          Join thousands of investors and top developers at Bengaluru&apos;s most
-          exclusive real estate showcase. Early registrations get priority access.
+          Join thousands of investors and top developers at Bengaluru&apos;s
+          most exclusive real estate showcase. Early registrations get priority
+          access.
         </p>
 
         {/* Event info */}
@@ -48,12 +49,12 @@ export default function FinalCTA() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/registration?type=visitor">
+          <Link href="/register?t=visitor">
             <button className="px-10 py-4 bg-white text-[#00620F] font-bold rounded-xl hover:bg-gray-100 transition-all duration-200 text-base shadow-lg hover:-translate-y-0.5 w-full sm:w-auto">
               Register Now →
             </button>
           </Link>
-          <Link href="/registration?type=exhibitor">
+          <Link href="/register?t=exhibitor">
             <button className="px-10 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-200 text-base w-full sm:w-auto hover:-translate-y-0.5">
               Book Your Stall
             </button>

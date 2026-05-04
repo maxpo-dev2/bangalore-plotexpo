@@ -1,0 +1,3 @@
+query GetAvailableSlots($date: String!, $timezone: String!) {
+  getAvailableSlots(date: $date, timezone: $timezone)
+}

@@ -1,0 +1,10 @@
+query ApplyDiscount($code: String!, $price: Float!, $projectId: String!) {
+  applyDiscount(code: $code, price: $price, projectId: $projectId) {
+    id
+    discountAmount
+    discountType
+    discountValue
+    finalPrice
+    originalPrice
+  }
+}

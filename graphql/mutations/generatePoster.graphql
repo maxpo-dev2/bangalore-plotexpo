@@ -1,0 +1,3 @@
+mutation GeneratePoster($leadId: String!) {
+  generatePoster(leadId: $leadId)
+}

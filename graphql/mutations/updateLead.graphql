@@ -1,0 +1,6 @@
+mutation UpdateLead($input: CreateLeadInput!) {
+  updateLead(input: $input) {
+    name
+    id
+  }
+}

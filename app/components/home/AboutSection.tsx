@@ -87,7 +87,7 @@ export default function AboutUsSection() {
               <Link href="https://api.whatsapp.com/send/?phone=919845114655&text=Hello%21+I%27m+interested+and+would+like+to+know+more.+Could+you+please+share+the+details%3F&type=phone_number&app_absent=0">
                 <Button variant="outline">Know More</Button>
               </Link>
-              <Link href="/registration?type=exhibitor">
+              <Link href="/register?t=exhibitor">
                 <Button variant="primary">Exhibit With Us</Button>
               </Link>
             </div>

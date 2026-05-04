@@ -118,7 +118,7 @@ const ThankYouPage = () => {
   const { title, bold, description, date, venue } = messages[type];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start text-center px-4 py-12 bg-white mt-8">
+    <div className="min-h-screen flex flex-col items-center justify-start text-center px-4 py-12  bg-white mt-8">
       {/* Header Card */}
       <div className="w-full max-w-2xl rounded-t-lg py-4 text-white font-bold text-2xl bg-[#406E24] mt-8">
         Bengaluru Plot Expo 2026 - {heading}

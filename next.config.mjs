@@ -1,9 +1,16 @@
-// next.config.mjs
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Add other settings below as needed
+
+  async redirects() {
+    return [
+      {
+        source: "/registration/:path*",
+        destination: "/register/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

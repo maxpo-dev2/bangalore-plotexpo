@@ -1,0 +1,10 @@
+query GetParticipants($projectId: String!) {
+  getParticipants(projectId: $projectId) {
+    id
+    logo
+    name
+    participantSeqNo
+    type
+    website
+  }
+}

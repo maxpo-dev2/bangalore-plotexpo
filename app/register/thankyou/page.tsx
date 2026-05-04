@@ -89,7 +89,7 @@
 //         <div className="w-full h-full flex justify-center items-start">
 //           <div className="w-full h-[1000px] overflow-hidden rounded-lg">
 //             <img
-//               src="/images/registration.png"
+//               src="/images/register.webp"
 //               alt="Event Venue"
 //               className="object-cover w-full h-full"
 //             />
@@ -100,7 +100,7 @@
 //   )
 // }
 
-// app/registration/thankyou/page.tsx
+// app/register/thankyou/page.tsx
 "use client";
 
 import { Suspense } from "react";

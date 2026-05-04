@@ -1,0 +1,28 @@
+query GetPartnersByProject($input: GetPartnersByProjectInput!) {
+  getPartnersByProject(input: $input) {
+    address
+    boothNumber
+    contactEmail
+    contactName
+    contactTitle
+    createdAt
+    description
+    facebookUrl
+    badge
+    featured
+    hideFromParticipant
+    id
+    instagramUrl
+    linkedinUrl
+    logoUrl
+    name
+    partnerType
+    phone
+    projectId
+    seqNo
+    status
+    website
+    xUrl
+    youtubeUrl
+  }
+}

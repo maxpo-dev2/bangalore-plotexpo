@@ -1,0 +1,21 @@
+query GetSponsorByProject($projectId: String!) {
+  getSponsorsByProject(projectId: $projectId) {
+    address
+    boothNumber
+    contactEmail
+    contactName
+    contactTitle
+    createdAt
+    description
+    featured
+    hideFromParticipant
+    linkedinUrl
+    id
+    logoUrl
+    name
+    projectId
+    seqNo
+    status
+    type
+  }
+}

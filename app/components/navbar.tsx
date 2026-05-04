@@ -9,8 +9,8 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/#about" },
   { label: "Past Events", href: "/past-event" },
-  { label: "Exhibitor Registration", href: "/registration?type=exhibitor" },
-  { label: "Visitor Registration", href: "/registration?type=visitor" },
+  { label: "Exhibitor Registration", href: "/register?t=exhibitor" },
+  { label: "Visitor Registration", href: "/register?t=visitor" },
 ];
 
 export default function Navbar() {
@@ -37,9 +37,7 @@ export default function Navbar() {
       <div className="section-container flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
-          <div
-            className={`rounded-lg transition-all duration-300 `}
-          >
+          <div className={`rounded-lg transition-all duration-300 `}>
             <img
               src="/images/bpe-logo.png"
               alt="BPE Logo"
@@ -56,11 +54,7 @@ export default function Navbar() {
             <Link
               key={item.label}
               href={item.href}
-              className={`text-sm xl:text-base font-medium transition-all duration-200 ${
-                scrolled
-                  ? "text-primary hover:text-primary"
-                  : "text-white/90 hover:text-white"
-              }`}
+              className={`text-sm xl:text-base font-medium transition-all duration-200 text-primary hover:font-bold`}
             >
               {item.label}
             </Link>
@@ -70,7 +64,7 @@ export default function Navbar() {
         {/* Right Side */}
         <div className="flex items-center gap-3">
           <div className="hidden md:block">
-            <Link href="/registration?type=enquiry">
+            <Link href="/register?t=enquiry">
               <Button variant="primary" size="sm">
                 Contact Us
               </Button>
@@ -79,11 +73,7 @@ export default function Navbar() {
 
           {/* Mobile Toggle */}
           <button
-            className={`lg:hidden p-2 rounded-md transition-colors ${
-              scrolled
-                ? "hover:bg-gray-100 text-black"
-                : "hover:bg-white/10 text-white"
-            }`}
+            className={`lg:hidden p-2 rounded-md transition-colors  text-primary hover:text-black`}
             aria-label="Toggle menu"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
@@ -104,7 +94,7 @@ export default function Navbar() {
               key={item.label}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className="font-medium text-base text-white/90 hover:text-white transition-colors border-b border-white/10 pb-4 last:border-0"
+              className="font-medium text-base text-white/90 hover:font-bold transition-colors border-b border-white/10 pb-4 last:border-0"
             >
               {item.label}
             </Link>
@@ -115,7 +105,7 @@ export default function Navbar() {
             className="w-full bg-white text-primary hover:bg-gray-100 font-semibold py-3 mt-2"
           >
             <Link
-              href="/registration?type=exhibitor"
+              href="/register?t=exhibitor"
               onClick={() => setIsMenuOpen(false)}
             >
               Book Your Stall

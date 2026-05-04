@@ -28,12 +28,10 @@ const escapeHtml = (str = "") =>
 
 export async function POST(req: NextRequest) {
   try {
-    const typeParam = req.nextUrl.searchParams.get("type") || "visitor";
-    // if (!ALLOWED_TYPES.includes(typeParam as any)) {
-    //   return NextResponse.json({ error: "Invalid type" }, { status: 400 });
-    // }
-
-    const type = typeParam as (typeof ALLOWED_TYPES)[number];
+    const type =
+      req.nextUrl.searchParams.get("t") ||
+      req.nextUrl.searchParams.get("type") ||
+      "enquiry";
     const data = await req.json();
 
     const {
@@ -49,9 +47,11 @@ export async function POST(req: NextRequest) {
       marketingConsent,
       location = "",
       budget = "",
+      bengaluruPart = "",
       utmCampaign = "direct_campaign",
       utmMedium = "website",
       utmSource = "direct",
+      leadId,
     } = data;
 
     console.log(data);
@@ -72,7 +72,8 @@ export async function POST(req: NextRequest) {
 
     const visitorPassId =
       type === "visitor"
-        ? `BPE-${crypto.randomBytes(3).toString("hex").toUpperCase()}`
+        ? (leadId ??
+          `BPE-${crypto.randomBytes(3).toString("hex").toUpperCase()}`)
         : "";
 
     const submittedAt = new Date().toLocaleString("en-IN", {
@@ -155,6 +156,7 @@ export async function POST(req: NextRequest) {
         message,
         termsAccepted,
         marketingConsent,
+        bengaluruPart,
         submittedAt,
         utmSource,
         utmMedium,
