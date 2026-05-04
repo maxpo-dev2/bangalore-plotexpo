@@ -1,6 +1,6 @@
 const EVENT_NAME = process.env.EVENT_NAME || "Bengaluru Plot Expo 2026";
 const EVENT_DATE = process.env.EVENT_DATE || "June 27-28, 2026";
-const EVENT_WEBSITE = process.env.EVENT_WEBSITE || "https://www.plotexpo.in/";
+const EVENT_WEBSITE = process.env.EVENT_WEBSITE || "https://plotexpo.in/";
 const EVENT_EMAIL = process.env.EVENT_EMAIL || "annu@mindsquaremedia.com";
 const EVENT_VENUE =
   process.env.EVENT_VENUE ||
